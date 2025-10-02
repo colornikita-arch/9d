@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Уравнения</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="reveal.js/dist/reveal.css">
+        <link rel="stylesheet" href="reveal.js/dist/theme/serif.css" id="theme">
+        <link rel="stylesheet" href="reveal.js/dist/theme/black.css" id="theme">
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                    <section>
+                        <section>
+                            <h2>Линейные уравнения</h2>
+                        </section>
+                        <section>
+                            Линейное уравнение - это уравнение вида $ax+b=0$, <br> где $a$ и $b$ - действительные числа, причём $a\neq0$.
+                        </section>
+                        <section>
+                            \[5x-61=0\]
+                            \[0.2x+2=0\]
+                            \[-77x+6=0\]
+                        </section>
+                    </section>
+                    <section>
+                        <section>
+                            Уравнения, сводящиеся к линейным
+                        </section>
+                        <section>
+                            Уравнение, сводящееся к линейному – уравнение, которое с помощью равносильных преобразований сводится к линейному.
+                        </section>
+                            <section>
+                            \[\frac{𝑥−1}{3−4𝑥}=2\]
+                            \[\frac{(2−𝑥)^2}{𝑥−2}=8\]
+                            \[(5𝑥+1)^2−\frac{2}{x}−\frac{5𝑥−2}{𝑥}−25𝑥^2=0\]
+                            \[\frac{2𝑥−1}{2−3𝑥}=−\frac{4𝑥+7}{6𝑥+11}\]
+                            </section>
+                        </section>
+                    </section>
+                    <section>
+                        <section>
+                        Квадратные уравнения
+                        </section>
+                        <section>
+                        Квадратное уравнение - уравнение вида $𝑎𝑥^2+𝑏𝑥+𝑐=0$, где $𝑎$, $𝑏$ и $𝑐$ - действительные числа, причём, $𝑎 ≠ 0$.
+                        </section>
+                        <section>
+                            <div align="left">
+                                <p>$4x^2+27x+18=0$</p>
+                                <p>$-5x^2+12x-4=0$</p>
+                                <p>$-7x^2+14x-7=0$</p>
+                                <br>
+                                <br>
+                            </div>
+                            <div align="right">
+                                $x = \frac{-b\pm\sqrt{b^2-4ac}}{2a}$
+                            </div>
+                        </section>
+                    </section>
+                    <section>
+                        <section>
+                            Уравнения, сводящиеся к квадратным
+                        </section>
+                        <section>
+                            Уравнение, сводящееся к квадратному – уравнение, которое с помощью равносильных операций сводится к квадратному.
+                        </section>
+                        <section>
+                            <div align="left">
+                                <p>$\frac 2x + 5x=7$</p>
+                                <p>$(2x+1)^3+31x^2-(2x+5)^2(2x-1)=17$</p>
+                                <br>
+                                <br>
+                            </div>
+                            <div align="right">
+                                $x = \frac{-b\pm\sqrt{b^2-4ac}}{2a}$
+                            </div>
+                        </section>
+                    </section>
+                    <section>
+                        <section>
+                            Биквадратные уравнения
+                        </section>
+                        <section>
+                            Биквадратное уравнение - уравнение вида $ax^4+bx^2+c=0$, где $a$, $b$, $c$ - действительные числа, причём $a ≠ 0$.
+                        </section>
+                        <section>
+                            Посмотрим на уравнение общего вида вида $ax^4+bx^2+c=0$.
+                            <section>
+                                <p>Заметим, что оно квадратное относительно $x^2$.</p>
+                                <p>Сделаем замену: $t=x^2$.</p>
+                            </section>
+                        </section>
+                    </section>
+            </div>
+        </div>
+
+        <script src="reveal.js/dist/reveal.js"></script>
+        <script src="reveal.js/plugin/math/math.js"></script>
+        <script>
+            Reveal.initialize({
+                history: true,
+                transition: 'linear',
+
+                mathjax2: {
+                    config: 'TeX-AMS_HTML-full',
+                    TeX: {
+                        Macros: {
+                            R: '\\mathbb{R}',
+                            set: [ '\\left\\{#1 \\; ; \\; #2\\right\\}', 2 ]
+                        }
+                    }
+                },
+                plugins: [ RevealMath.MathJax2 ]
+            });
+        </script>
+    </body>
+</html>

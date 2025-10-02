@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Уравнения</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="reveal.js/dist/reveal.css">
+        <link rel="stylesheet" href="reveal.js/dist/theme/serif.css" id="theme">
+        <link rel="stylesheet" href="reveal.js/dist/theme/black.css" id="theme">
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                    <section>
+                        <h2>Теория вероятностей</h2>
+                        задание 10
+                    </section>
+                    <section>
+                        В коробке лежат 15 шариков, 6 из них синего цвета. Найдите вероятность того, шар, который случайным образом достунут из коробки, будет синего цвета.
+                    </section>
+                    <section>
+                        <h3>Формально</h3>
+                        Вероятность события - отношение количества исходов, благоприятствующих этому событию, к количество всех возможных событий.
+                    </section>
+                    <section>
+                        <h3>Для нас</h3>
+                        Делим меньшее на большее.
+                    </section>
+                    <section>
+                        В коробке 12 шариков трех различных цветов: синего, зеленего и оранжевого. Шаров синего цвета - 3 штук, зеленого - 5. Найдите веротность того, что случайный шар будет оранжевого цвета.
+                    </section>
+                    <section data-background-video="videos/teor_ver.mp4" data-background-color="#000000" id="vid" type="videoslide">
+                        <p class="fragment" type='video' time_start=0 time_end=2.9>Выезжает</p>
+                        <p class="fragment" type='video' time_start=2.9 time_end=5>Первый вверх</p>
+                        <p class="fragment" type='video' time_start=5 time_end=11>Остальные вверх</p>
+                        <p class="fragment" type='video' time_start=11 time_end=13>Все</p>
+                        <p class="fragment" type='video' time_start=13 time_end=15>Все вниз</p>
+                        <p class="fragment" type='video' time_start=15 time_end=17.3>Гига первый</p>
+                        <p class="fragment" type='video' time_start=17.3 time_end=27>Спец эффекты</p>
+                        <p class="fragment" type='video' time_start=27 time_end=28.8>Я стенли кубрик</p>
+                        <p class="fragment" type='video' time_start=28.8 time_end=30>The end.</p>
+                    </section>
+            </div>
+        </div>
+
+        <script src="reveal.js/dist/reveal.js"></script>
+        <script src="reveal.js/plugin/zoom/zoom.js"></script>
+        <script src="reveal.js/plugin/notes/notes.js"></script>
+        <script src="reveal.js/plugin/search/search.js"></script>
+        <script src="reveal.js/plugin/markdown/markdown.js"></script>
+        <script src="reveal.js/plugin/highlight/highlight.js"></script>
+        <script src="video_slide.js"></script>
+
+        <script>
+            Reveal.initialize({
+                controls: true,
+                center: true,
+                hash: true,
+                autoPlayMedia: true,
+
+                plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
+            });
+        </script>
+    </body>
+</html>
