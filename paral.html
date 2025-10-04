@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Параллелограммы</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="reveal.js/dist/theme/white.css" id="theme">
+		<style type="text/css" media="screen">
+			.slides section.has-dark-background,
+			.slides section.has-dark-background h2 {
+				color: #fff;
+			}
+			.slides section.has-light-background,
+			.slides section.has-light-background h2 {
+				color: #222;
+			}
+        svg{
+            max-width: 100%;
+            height: auto;
+            display: auto;
+            margin: 0 auto;
+        }
+        .slide-content{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+                <section>
+                    <section>
+                        <h2>Параллелограммы</h2>
+                    </section>
+                    <section>
+                        <h4>Определение</h4><br>
+                        <div style="display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: center;">
+                            <div style="margin-bottom: 50px; font-size: 28px; text-align: center; max-width: 800px;">
+                                <p>Параллелограмм — это четырёхугольник, у которого противоположные стороны попарно параллельны.</p>
+                            </div>
+
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 40px;">
+
+                                <div style="flex: 1; text-align: center;">
+                                    <svg width="250" height="180" viewBox="0 0 250 180">
+                                        <polygon points="50,30 200,30 170,150 20,150"
+                                                fill="#f0f0f0" stroke="#000000" stroke-width="3"/>
+
+                                        <circle cx="50" cy="30" r="4" fill="#000000"/>
+                                        <circle cx="200" cy="30" r="4" fill="#000000"/>
+                                        <circle cx="170" cy="150" r="4" fill="#000000"/>
+                                        <circle cx="20" cy="150" r="4" fill="#000000"/>
+
+                                        <text x="45" y="20" font-family="Arial" font-size="14" fill="#000000">A</text>
+                                        <text x="205" y="20" font-family="Arial" font-size="14" fill="#000000">B</text>
+                                        <text x="175" y="165" font-family="Arial" font-size="14" fill="#000000">C</text>
+                                        <text x="15" y="165" font-family="Arial" font-size="14" fill="#000000">D</text>
+                                    </svg>
+                                </div>
+
+                                <div style="flex: 1; font-size: 24px; line-height: 1.6;">
+                                    <p><strong>Параллельные стороны:</strong></p>
+                                    <p>AB ∥ DC</p>
+                                    <p>AD ∥ BC</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Свойства параллелограмма</h3>
+                    </section>
+                    <section>
+                        <div class="slide-content">
+                            <div style="display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: center;">
+                            <div style="margin-bottom: 40px; font-size: 32px; text-align: center;">
+                                <p><strong>Противоположные стороны параллелолграмма равны</strong></p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start; justify-content: center; gap: 50px; width: 100%;">
+
+                                <div style="flex: 1; text-align: center;">
+                                    <div style="margin-bottom: 15px; font-size: 20px; font-weight: bold;">
+                                        Дано: ABCD - параллелограмм
+                                    </div>
+                                    <svg width="350" height="280" viewBox="0 0 350 280">
+                                        <polygon points="60,40 280,40 240,220 20,220"
+                                                fill="#f8f9fa" stroke="#000000" stroke-width="3"/>
+
+                                        <line x1="60" y1="40" x2="240" y2="220"
+                                            stroke="#000000" stroke-width="2" stroke-dasharray="5,5"/>
+                                        <line x1="280" y1="40" x2="20" y2="220"
+                                            stroke="#000000" stroke-width="2" stroke-dasharray="5,5"/>
+
+                                        <circle cx="150" cy="130" r="5" fill="#000000"/>
+                                        <text x="160" y="135" font-family="Arial" font-size="16" fill="#000000">O</text>
+
+                                        <circle cx="60" cy="40" r="4" fill="#000000"/>
+                                        <circle cx="280" cy="40" r="4" fill="#000000"/>
+                                        <circle cx="240" cy="220" r="4" fill="#000000"/>
+                                        <circle cx="20" cy="220" r="4" fill="#000000"/>
+
+                                        <text x="50" y="25" font-family="Arial" font-size="16" fill="#000000">A</text>
+                                        <text x="290" y="25" font-family="Arial" font-size="16" fill="#000000">B</text>
+                                        <text x="250" y="240" font-family="Arial" font-size="16" fill="#000000">C</text>
+                                        <text x="10" y="240" font-family="Arial" font-size="16" fill="#000000">D</text>
+                                    </svg>
+                                </div>
+                                <div style="flex: 1; font-size: 18px; line-height: 1.5;">
+                                    <h3 class="fragment" style="color:#000000; margin-bottom: 20px; font-weight: bold;">Доказательство:</h3>
+                                    <div style="padding: 0px;">
+                                        <p class="fragment" style="text-align: justify;">
+                                            1. По определению параллелограмма $ABCD$: $BC \Vert AD, AB \Vert CD$.
+                                        </p>
+                                        <p class="fragment" style="text-align: justify;">2. По св-ву $BC \Vert AD$ и секущей $AC$: $\angle BCA = \angle CAD$.</p>
+
+                                        <p class="fragment" style="text-align: justify;">3. По св-ву $AB \Vert CD$ и секущей $AC$: $\angle BAC = \angle ACD$.</p>
+
+                                        <p class="fragment" style="text-align: justify;">
+                                            4. $AC$ общая сторона, $\angle BCA = \angle CAD$ и $\angle BAC = \angle ACD$ тогда по признаку равенства треугольников (по стороне и прилежащим к ней углам) $\triangle ABC = \triangle CDA$.
+                                        </p>
+
+                                        <p class="fragment" style="text-align: justify;">
+                                            5. Так как в равных треугольниках соответственные элементы равны, то $AB=CD$, $BC=AD$.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+                    <section>
+                        <div class="slide-content">
+                            <div style="display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: center;">
+                            <div style="margin-bottom: 40px; font-size: 32px; text-align: center;">
+                                <p><strong>Противоположные углы параллелолграмма равны</strong></p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start; justify-content: center; gap: 50px; width: 100%;">
+
+                                <div style="flex: 1; text-align: center;">
+                                    <div style="margin-bottom: 15px; font-size: 20px; font-weight: bold;">
+                                        Дано: ABCD - параллелограмм
+                                    </div>
+                                    <svg width="350" height="280" viewBox="0 0 350 280">
+                                        <polygon points="60,40 280,40 240,220 20,220"
+                                                fill="#f8f9fa" stroke="#000000" stroke-width="3"/>
+
+                                        <line x1="60" y1="40" x2="240" y2="220"
+                                            stroke="#000000" stroke-width="2" stroke-dasharray="5,5"/>
+                                        <line x1="280" y1="40" x2="20" y2="220"
+                                            stroke="#000000" stroke-width="2" stroke-dasharray="5,5"/>
+
+                                        <circle cx="150" cy="130" r="5" fill="#000000"/>
+                                        <text x="160" y="135" font-family="Arial" font-size="16" fill="#000000">O</text>
+
+                                        <circle cx="60" cy="40" r="4" fill="#000000"/>
+                                        <circle cx="280" cy="40" r="4" fill="#000000"/>
+                                        <circle cx="240" cy="220" r="4" fill="#000000"/>
+                                        <circle cx="20" cy="220" r="4" fill="#000000"/>
+
+                                        <text x="50" y="25" font-family="Arial" font-size="16" fill="#000000">A</text>
+                                        <text x="290" y="25" font-family="Arial" font-size="16" fill="#000000">B</text>
+                                        <text x="250" y="240" font-family="Arial" font-size="16" fill="#000000">C</text>
+                                        <text x="10" y="240" font-family="Arial" font-size="16" fill="#000000">D</text>
+                                    </svg>
+                                </div>
+                                <div style="flex: 1; font-size: 18px; line-height: 1.5;">
+
+                                    <h3 class="fragment style="color:#000000; margin-bottom: 20px; font-weight: bold;">Доказательство:</h3>
+                                    <div style="padding: 0px;">
+                                        <p class="fragment" style="text-align: justify;">1. По определению параллелограмма $ABCD$: $BC \Vert AD$ и $AB \Vert CD$.</p>
+
+                                        <p class="fragment" style="text-align: justify;">2. По св-ву $BC \Vert AD$ и секущей $AC$: $\angle BCA = \angle CAD$.</p>
+
+                                        <p class="fragment" style="text-align: justify;">3. По св-ву $AB \Vert CD$ и секущей $AC$: $\angle BAC = \angle ACD$.</p>
+
+                                        <p class="fragment" style="text-align: justify;">4. $AC$ - общая сторона, $\angle BCA = \angle CAD$, $\angle BAC = \angle ACD$
+                                            тогда по признаку равенства треугольников (по стороне и прилежащим к ней углам)
+                                            $\triangle ABC = \triangle CDA$.
+                                        </p>
+
+                                        <p class="fragment" style="text-align: justify;">5. Так как в равных треугольниках соответственные элементы равны, то $\angle ABC = \angle CDA$.</p>
+
+                                        <p class="fragment" style="text-align: justify;">6. Аналогично, проведя диагональ $BD$ доказывается равенство
+                                             $\triangle ABD = \triangle CDB$ и равенство $\angle BAD = \angle BCD$.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+                    <section>
+                        <div class="slide-content">
+                            <div style="display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: center;">
+                                <div style="margin-bottom: 40px; font-size: 32px; text-align: center;">
+                                    <p><strong>Диагонали точкой пересечения делятся пополам</strong></p>
+                                </div>
+
+                                <div style="display: flex; align-items: flex-start; justify-content: center; gap: 50px; width: 100%;">
+
+                                    <div style="flex: 1; text-align: center;">
+                                        <div style="margin-bottom: 15px; font-size: 20px; font-weight: bold;">
+                                            Дано: ABCD - параллелограмм
+                                        </div>
+                                        <svg width="350" height="280" viewBox="0 0 350 280">
+                                            <polygon points="60,40 280,40 240,220 20,220"
+                                                    fill="#f8f9fa" stroke="#000000" stroke-width="3"/>
+
+                                            <line x1="60" y1="40" x2="240" y2="220"
+                                                stroke="#000000" stroke-width="2" stroke-dasharray="5,5"/>
+                                            <line x1="280" y1="40" x2="20" y2="220"
+                                                stroke="#000000" stroke-width="2" stroke-dasharray="5,5"/>
+
+                                            <circle cx="150" cy="130" r="5" fill="#000000"/>
+                                            <text x="160" y="135" font-family="Arial" font-size="16" fill="#000000">O</text>
+
+                                            <circle cx="60" cy="40" r="4" fill="#000000"/>
+                                            <circle cx="280" cy="40" r="4" fill="#000000"/>
+                                            <circle cx="240" cy="220" r="4" fill="#000000"/>
+                                            <circle cx="20" cy="220" r="4" fill="#000000"/>
+
+                                            <text x="50" y="25" font-family="Arial" font-size="16" fill="#000000">A</text>
+                                            <text x="290" y="25" font-family="Arial" font-size="16" fill="#000000">B</text>
+                                            <text x="250" y="240" font-family="Arial" font-size="16" fill="#000000">C</text>
+                                            <text x="10" y="240" font-family="Arial" font-size="16" fill="#000000">D</text>
+                                        </svg>
+                                    </div>
+
+                                    <div style="flex: 1; font-size: 18px; line-height: 1.5;">
+
+                                        <h3 class="fragment" style="color:#000000; margin-bottom: 20px; font-weight: bold;">Доказательство:</h3>
+                                        <div style="padding: 0px;">
+                                            <p class="fragment" style="text-align: justify;">1. По определению параллелограмма $ABCD$:
+                                            $BC \Vert AD$ и $AB \Vert CD$.</p>
+
+                                            <p class="fragment" style="text-align: justify;">2. По св-ву $AB \Vert CD$ и секущей $BD$: $\angle ABD = \angle BDC$.</p>
+
+                                            <p class="fragment" style="text-align: justify;">3. По св-ву $AB \Vert CD$ и секущей $AC$: $\angle BAC = \angle ACD$.</p>
+
+                                            <p class="fragment" style="text-align: justify;">
+                                                4. По свойству параллелограмма противоположные стороны равны: $AB = CD$.</p>
+
+                                            <p class="fragment" style="text-align: justify;">5. $AB=CD$, $\angle ABD = \angle BDC$, $\angle BAC = \angle ACD$,
+                                            тогда по признаку равенства треугольников (по стороне и прилежащим к ней углам)
+                                            $\triangle ABO = \triangle CDO$.</p>
+
+                                            <p class="fragment" style="text-align: justify;">6. Так как в равных треугольниках соответственные элементы равны,
+                                            то $AO=OC$, $BO=OD$.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>Признаки параллелограмма</h3>
+                    </section>
+
+                    <section>
+                        <div style="display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: center;">
+                            <div style="margin-bottom: 40px; font-size: 28px; text-align: center; max-width: 900px;">
+                                <p><strong>Если в четырёхугольнике две стороны равны и параллельны, то этот четырёхугольник - параллелограмм</strong></p>
+                            </div>
+
+                            <div style="display: flex; align-items: flex-start; justify-content: center; gap: 50px; width: 100%;">
+                                <div style="flex: 1; text-align: center;">
+                                    <div style="margin-bottom: 15px; font-size: 20px; font-weight: bold;">
+                                        Дано: ABCD - четырёхугольник, <br> AB ∥ CD, AB = CD
+                                    </div>
+                                    <svg width="350" height="280" viewBox="0 0 350 280">
+                                        <polygon points="60,40 280,40 240,220 20,220"
+                                                fill="#f8f9fa" stroke="#000000" stroke-width="3"/>
+
+                                        <line x1="60" y1="40" x2="240" y2="220"
+                                            stroke="#000000" stroke-width="2" stroke-dasharray="5,5"/>
+                                        <line x1="280" y1="40" x2="20" y2="220"
+                                            stroke="#000000" stroke-width="2" stroke-dasharray="5,5"/>
+
+                                        <circle cx="150" cy="130" r="5" fill="#000000"/>
+                                        <text x="160" y="135" font-family="Arial" font-size="16" fill="#000000">O</text>
+
+                                        <circle cx="60" cy="40" r="4" fill="#000000"/>
+                                        <circle cx="280" cy="40" r="4" fill="#000000"/>
+                                        <circle cx="240" cy="220" r="4" fill="#000000"/>
+                                        <circle cx="20" cy="220" r="4" fill="#000000"/>
+
+                                        <text x="50" y="25" font-family="Arial" font-size="16" fill="#000000">A</text>
+                                        <text x="290" y="25" font-family="Arial" font-size="16" fill="#000000">B</text>
+                                        <text x="250" y="240" font-family="Arial" font-size="16" fill="#000000">C</text>
+                                        <text x="10" y="240" font-family="Arial" font-size="16" fill="#000000">D</text>
+
+                                        <text x="130" y="225" font-family="Arial" font-size="12" fill="#000000">||</text>
+                                        <text x="160" y="43" font-family="Arial" font-size="12" fill="#000000">||</text>
+
+                                    </svg>
+                                </div>
+
+                                <div style="flex: 1; font-size: 15px; line-height: 1.5;">
+                                    <h3 class="fragmnt" style="color:#000000; margin-bottom: 18px; font-weight: bold;">Доказательство:</h3>
+                                    <div style="padding: 0px;">
+                                        <p class="fragment" style="text-align: justify;">1. По св-ву $AB \Vert CD$ и секущей $BD$: $\angle ABD = \angle BDC$.</p>
+
+                                        <p class="fragment" style="text-align: justify;">2. По св-ву $AB \Vert CD$ и секущей $AC$: $\angle BAC = \angle ACD$.</p>
+
+                                        <p class="fragment" style="text-align: justify;">3. $AB=CD$, $\angle ABD = \angle BDC$, $\angle BAC = \angle ACD$,
+                                        тогда по признаку равенства треугольников
+                                        (по стороне и прилежащим к ней углам) $\triangle ABO = \triangle CDO$.</p>
+
+                                        <p class="fragment" style="text-align: justify;">4. Так как в равных треугольниках соответственные элементы равны,
+                                        то $AO=OC$, $BO=OD$.</p>
+
+                                        <p class="fragment" style="text-align: justify;">5. Так как $AO=OC$, $BO=OD$, а $\angle AOD = \angle BOC$ как вертикальные углы, то по
+                                        признаку равенства треугольников (по двум сторонам и углу между ними)
+                                        $\triangle AOD = \triangle COB$.</p>
+
+                                        <p class="fragment" style="text-align: justify;">6. Т.к. в равных треугольниках соответственные элементы равны,
+                                        то $\angle OAD = \angle OCB$,
+                                        а они являются накрестлежащими при прямых $BC$ и $AD$, секущей $AC$.
+                                        По признаку параллельных прямых $BC \Vert AD$.
+                                        $BC \Vert AD$, $AB \Vert CD$, $ABCD$ - параллелограмм по определению.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: center;">
+                            <div style="margin-bottom: 40px; font-size: 28px; text-align: center; max-width: 900px;">
+                                <p><strong>Если в четырёхугольнике противоположные стороны попарно равны, то этот четырёхугольник - параллелограмм</strong></p>
+                            </div>
+
+                            <div style="display: flex; align-items: flex-start; justify-content: center; gap: 50px; width: 100%;">
+                                <div style="flex: 1; text-align: center;">
+                                    <div style="margin-bottom: 15px; font-size: 20px; font-weight: bold;">
+                                        Дано: ABCD - четырёхугольник, <br> AB = CD, BC = AD
+                                    </div>
+                                    <svg width="350" height="280" viewBox="0 0 350 280">
+                                        <polygon points="60,40 280,40 240,220 20,220"
+                                                fill="#f8f9fa" stroke="#000000" stroke-width="3"/>
+
+                                        <line x1="60" y1="40" x2="240" y2="220"
+                                            stroke="#000000" stroke-width="2" stroke-dasharray="5,5"/>
+
+                                        <circle cx="60" cy="40" r="4" fill="#000000"/>
+                                        <circle cx="280" cy="40" r="4" fill="#000000"/>
+                                        <circle cx="240" cy="220" r="4" fill="#000000"/>
+                                        <circle cx="20" cy="220" r="4" fill="#000000"/>
+
+                                        <text x="50" y="25" font-family="Arial" font-size="16" fill="#000000">A</text>
+                                        <text x="290" y="25" font-family="Arial" font-size="16" fill="#000000">B</text>
+                                        <text x="250" y="240" font-family="Arial" font-size="16" fill="#000000">C</text>
+                                        <text x="10" y="240" font-family="Arial" font-size="16" fill="#000000">D</text>
+
+                                        <text x="32" y="130" font-family="Arial" font-size="14" fill="#000000">=</text>
+                                        <text x="260" y="130" font-family="Arial" font-size="14" fill="#000000">=</text>
+                                        <text x="130" y="225" font-family="Arial" font-size="12" fill="#000000">|</text>
+                                        <text x="160" y="43" font-family="Arial" font-size="12" fill="#000000">|</text>
+                                    </svg>
+                                </div>
+
+                                <div style="flex: 1; font-size: 22px; line-height: 1.5;">
+                                    <h3 class="fragment" style="color:#000000; margin-bottom: 20px;"><strong>Доказательство:</strong></h3>
+                                    <div style="padding: 0px;">
+                                        <p class="fragment" style="text-align: justify;">1. $AB = CD$, $BC = AD$, $AC$ - общая, то по признаку
+                                        равенства треугольников (по трем сторонам) $\triangle ABC = \triangle CDA$.</p>
+
+                                        <p class="fragment" style="text-align: justify;">2. Так как в равных треугольниках соответственные элементы равны,
+                                        то $\angle BAC = \angle ACD$,</p>
+
+                                        <p class="fragment" style="text-align: justify;">3. $\angle BAC = \angle ACD$ - накрестлежащие при прямых $AB$ и $CD$, секущей $AC$.
+                                        По признаку параллельных прямых $AB \Vert CD$.</p>
+
+                                        <p class="fragment" style="text-align: justify;">4. Так как $AB \Vert CD$ и $AB = CD$, то по признаку параллелограмма
+                                        (две стороны равны и параллельны), $ABCD$ - параллелограмм.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: center;">
+                            <div style="margin-bottom: 40px; font-size: 28px; text-align: center; max-width: 900px;">
+                                <p><strong>Если диагонали четырёхугольника точкой пересечения делятся пополам, то этот четырёхугольник - параллелограмм</strong></p>
+                            </div>
+
+                            <div style="display: flex; align-items: flex-start; justify-content: center; gap: 50px; width: 100%;">
+                                <div style="flex: 1; text-align: center;">
+                                    <div style="margin-bottom: 15px; font-size: 20px; font-weight: bold;">
+                                        Дано: ABCD - четырёхугольник, AO = OC, BO = OD
+                                    </div>
+                                    <svg width="350" height="280" viewBox="0 0 350 280">
+                                        <polygon points="60,40 280,40 240,220 20,220"
+                                                fill="#f8f9fa" stroke="#000000" stroke-width="3"/>
+
+                                        <line x1="60" y1="40" x2="240" y2="220"
+                                            stroke="#000000" stroke-width="2" stroke-dasharray="5,5"/>
+                                        <line x1="280" y1="40" x2="20" y2="220"
+                                            stroke="#000000" stroke-width="2" stroke-dasharray="5,5"/>
+
+                                        <circle cx="150" cy="130" r="5" fill="#000000"/>
+                                        <text x="160" y="135" font-family="Arial" font-size="16" fill="#000000">O</text>
+
+                                        <circle cx="60" cy="40" r="4" fill="#000000"/>
+                                        <circle cx="280" cy="40" r="4" fill="#000000"/>
+                                        <circle cx="240" cy="220" r="4" fill="#000000"/>
+                                        <circle cx="20" cy="220" r="4" fill="#000000"/>
+
+                                        <text x="50" y="25" font-family="Arial" font-size="16" fill="#000000">A</text>
+                                        <text x="290" y="25" font-family="Arial" font-size="16" fill="#000000">B</text>
+                                        <text x="250" y="240" font-family="Arial" font-size="16" fill="#000000">C</text>
+                                        <text x="10" y="240" font-family="Arial" font-size="16" fill="#000000">D</text>
+
+                                        <text x="90" y="80" font-family="Arial" font-size="12" fill="#000000">==</text>
+                                        <text x="190" y="180" font-family="Arial" font-size="12" fill="#000000">==</text>
+                                        <text x="210" y="80" font-family="Arial" font-size="12" fill="#000000">___</text>
+                                        <text x="65" y="180" font-family="Arial" font-size="12" fill="#000000">___</text>
+                                    </svg>
+                                </div>
+
+                                <div style="flex: 1; font-size: 20px; line-height: 1.5;">
+                                    <h3 class="fragment" style="color:#000000; margin-bottom: 20px;"><strong>Доказательство:</strong></h3>
+                                    <div style="padding: 0px;">
+                                        <p class="fragment" style="text-align: justify;">
+                                            1. $AO = OC$, $BO = OD$, $\angle AOB = \angle COD$
+                                        как вертикальные углы, то по признаку равенства треугольников
+                                        (по двум сторонам и углу между ними) $\triangle ABO = \triangle CDO$.</p>
+
+                                        <p class="fragment" style="text-align: justify;">2. Так как в равных треугольниках соответственные
+                                        элементы равны, то $\angle BAC = \angle ACD$, $AB = CD$</p>
+
+                                        <p class="fragment" style="text-align: justify;">3. $\angle BAC = \angle ACD$ - накрестлежащие при прямых $BC$ и $AD$, секущей $AC$.
+                                        По признаку параллельных прямых $AB \Vert CD$.</p>
+
+                                        <p class="fragment" style="text-align: justify;">4. Так как $AB \Vert CD$ и $AB = CD$, то по признаку параллелограмма
+                                        (две стороны равны и параллельны), $ABCD$ - параллелограмм.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+            </div>
+		</div>
+
+		<script src="reveal.js/dist/reveal.js"></script>
+		<script src="reveal.js/plugin/math/math.js"></script>
+		<script>
+			Reveal.initialize({
+				history: true,
+				transition: 'linear',
+
+				mathjax2: {
+					config: 'TeX-AMS_HTML-full',
+					TeX: {
+						Macros: {
+							R: '\\mathbb{R}',
+							set: [ '\\left\\{#1 \\; ; \\; #2\\right\\}', 2 ]
+						}
+					}
+				},
+				plugins: [ RevealMath.MathJax2 ]
+			});
+		</script>
+
+	</body>
+</html>

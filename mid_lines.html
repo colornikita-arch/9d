@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Средние линии</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="reveal.js/dist/reveal.css">
+        <link rel="stylesheet" href="reveal.js/dist/theme/serif.css" id="theme">
+        <link rel="stylesheet" href="reveal.js/dist/theme/black.css" id="theme">
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h3>Средние линии</h3>
+                    <h3>Теоремы Фалеса и Вариньона</h3>
+                </section>
+                <section>
+                    <section><h3>Средняя линия треугольника</h3></section>
+                    <section>
+                        <h4>Определение</h4><br>
+                        Отрезок, соединяющий середины двух сторон треугольника.
+                    </section>
+                    <section>
+                        <h4>Свойство средней линии треугольник</h4><br>
+                        Средняя линия треугольника параллельна третьей стороне и равна половине ее длины.
+                    </section>
+                    <section>
+                        <h4>Признак средней линии треугольника</h4><br>
+                        Если отрезок в треугольнике проходит через середину одной из его сторон и параллелен другой, то этот отрезок - средняя линия.
+                    </section>
+                </section>
+                <section>
+                    <section><h3>Средняя линия трапеции</h3></section>
+                    <section>
+                        <h4>Определение</h4><br>
+                        Отрезок, соединяющий середины двух боковых сторон трапеции.
+                    </section>
+                    <section>
+                        <h4>Свойство средней линии трапеции</h4><br>
+                        Средняя линия трапеции параллельна основаниям и равна полусумме их длин.
+                    </section>
+                    <section>
+                        <h4>Признак средней линии трапеции</h4><br>
+                        Если прямая параллельна основаниям трапеции и делит одну из боковых сторон пополам, то эта прямая является средней линией трапеции.
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h4>Теорема Фалеса</h4><br>
+                        Если на одной из двух прямых отложить последовательно несколько равных отрезков и через их концы провести параллельные прямые, пересекающие вторую прямую, то они отсекут на второй прямой равные между собой отрезки.
+                    </section>
+                    <section>
+                        <h4>Обратная теорема Фалеса</h4><br>
+                        Если прямые отсекают на каждой из двух данных равные отрезки, то эти прямые параллельны.
+                    </section>
+                </section>
+                <section data-background-video="videos/varignon.mp4" data-background-color="#000000" id="vid" type="videoslide">
+                    <p class="fragment" type='video' time_start=0 time_end=2></p>
+                    <p class="fragment" type='video' time_start=2 time_end=9></p>
+                    <p class="fragment" type='video' time_start=9 time_end=19.3></p>
+                    <p class="fragment" type='video' time_start=19.3 time_end=28.8></p>
+                    <p class="fragment" type='video' time_start=28.8 time_end=32></p>
+                    <p class="fragment" type='video' time_start=32 time_end=38></p>
+                    <p class="fragment" type='video' time_start=38 time_end=40.9></p>
+                    <p class="fragment" type='video' time_start=40.9 time_end=44.8></p>
+                    <p class="fragment" type='video' time_start=44.8 time_end=47.9></p>
+                    <p class="fragment" type='video' time_start=47.9 time_end=50></p>
+                    <p class="fragment" type='video' time_start=50 time_end=55></p>
+                    <p class="fragment" type='video' time_start=55 time_end=70></p>
+                    <p class="fragment" type='video' time_start=70 time_end=74.85></p>
+                    <p class="fragment" type='video' time_start=74.85 time_end=78.6></p>
+                    <p class="fragment" type='video' time_start=78.6 time_end=90></p>
+                </section>
+                <section>
+                    <h4>Следствие</h4><br>
+                    Периметр параллелограмма Вариньона равен сумме диагоналей исходного четырёхугольника.
+                </section>
+
+            </div>
+        </div>
+
+        <script src="reveal.js/dist/reveal.js"></script>
+        <script src="reveal.js/plugin/zoom/zoom.js"></script>
+        <script src="reveal.js/plugin/notes/notes.js"></script>
+        <script src="reveal.js/plugin/search/search.js"></script>
+        <script src="reveal.js/plugin/markdown/markdown.js"></script>
+        <script src="reveal.js/plugin/highlight/highlight.js"></script>
+        <script src="video_slide.js"></script>
+
+        <script>
+            Reveal.initialize({
+                controls: true,
+                center: true,
+                hash: true,
+                autoPlayMedia: true,
+
+                plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
+            });
+        </script>
+    </body>
+</html>
