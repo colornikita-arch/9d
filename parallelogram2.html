@@ -1,0 +1,1067 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>reveal.js - Slide Backgrounds</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="reveal.js/dist/theme/white.css" id="theme">
+        <style type="text/css" media="screen">
+            .slides section.has-dark-background,
+			.slides section.has-dark-background h2 {
+				color: #fff;
+			}
+			.slides section.has-light-background,
+			.slides section.has-light-background h2 {
+				color: #222;
+			}
+            text{
+                font-weight: normal !important;
+                font-family: 'Times New Roman', Times, serif;
+            }
+            .center-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 500px;
+            }
+            .figures-container {
+                display: flex;
+                justify-content: space-around;
+                width: 80%;
+                margin-top: 50px;
+            }
+            .figure {
+                width: 150px;
+                height: 150px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            svg {
+                stroke: black;
+                stroke-width: 1;
+                fill: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <div class="center-content">
+                        <h2>Частные случаи параллелограмма</h2>
+                        <div class="figures-container">
+                            <!-- Прямоугольник -->
+                            <div class="figure">
+                                <svg width="120" height="80" viewBox="0 0 120 80">
+                                    <rect x="10" y="10" width="100" height="60" />
+                                </svg>
+                            </div>
+                            <!-- Ромб -->
+                            <div class="figure">
+                                <svg width="120" height="120" viewBox="0 0 120 120">
+                                    <polygon points="60,10 110,60 60,110 10,60" />
+                                </svg>
+                            </div>
+                            <!-- Квадрат -->
+                            <div class="figure">
+                                <svg width="120" height="120" viewBox="0 0 120 120">
+                                    <rect x="10" y="10" width="100" height="100" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; height: 600px;">
+                            <h2>Прямоугольник</h2>
+
+                            <div style="display: flex; justify-content: space-between; align-items: center; flex-grow: 1; margin-top: -50px;">
+
+                                <div style="width: 45%; font-size: 28px;">
+                                    <p><strong>Прямоугольник</strong> - параллелограмм, у которого все углы прямые.</p>
+                                </div>
+
+                                <div style="width: 45%;">
+                                    <div style="position: relative; margin-bottom: 30px;">
+                                        <svg width="300" height="180" viewBox="0 0 200 120">
+                                            <!-- Прямоугольник -->
+                                            <rect x="20" y="20" width="160" height="80" stroke="black" stroke-width="2" fill="000000"/>
+
+                                            <!-- Вершины -->
+                                            <text x="5" y="115" font-size="14">A</text>
+                                            <text x="185" y="115" font-size="14">D</text>
+                                            <text x="185" y="20" font-size="14">C</text>
+                                            <text x="5" y="20" font-size="14">B</text>
+
+                                            <!-- Прямые углы -->
+                                            <path d="M 20 20 L 30 20 L 30 30 L 20 30" stroke="black" stroke-width="1" fill="none"/>
+                                            <path d="M 180 20 L 170 20 L 170 30 L 180 30" stroke="black" stroke-width="1" fill="none"/>
+                                            <path d="M 180 100 L 170 100 L 170 90 L 180 90" stroke="black" stroke-width="1" fill="none"/>
+                                            <path d="M 20 100 L 30 100 L 30 90 L 20 90" stroke="black" stroke-width="1" fill="none"/>
+                                        </svg>
+                                    </div>
+
+                                    <div style="font-size: 20px; position: relative; margin-top: -50px;">
+                                        <p>$\angle A = \angle B = \angle C = \angle D = 90^{\circ}$</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h5>Прямоугольник - частный случай параллелограмма, поэтому обладает всеми свойствами параллелограмма</h5>
+                    </section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; height: 600px;">
+                            <h3>Свойства прямоугольника</h3>                            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-grow: 1; margin-top: 30px;">
+
+                                <div style="width: 45%;">
+                                    <div style="font-size: 24px; margin-bottom: 60px;">
+                                        <p><strong>Дополнительное свойство прямоугольника:</strong></p>
+                                        <p style="font-size: 20px;"><strong>Диагонали прямоугольника равны</strong></p>
+                                        <p style="font-size: 20px;"><strong>Дано:</strong> $ABCD$ - прямоугольник <br> $AC \cap BD = O$</p>
+                                    </div>
+
+                                    <div style="position: relative; margin-top: -30px;">
+                                        <svg width="300" height="180" viewBox="0 0 200 120">
+                                            <!-- Прямоугольник -->
+                                            <rect x="20" y="20" width="160" height="80" stroke="black" stroke-width="2" fill="none"/>
+
+                                            <!-- Диагонали -->
+                                            <line x1="20" y1="20" x2="180" y2="100" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+                                            <line x1="180" y1="20" x2="20" y2="100" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+
+                                            <!-- Вершины -->
+                                            <text x="5" y="115" font-size="14">A</text>
+                                            <text x="5" y="20" font-size="14">B</text>
+                                            <text x="185" y="20" font-size="14">C</text>
+                                            <text x="185" y="115" font-size="14">D</text>
+                                            <text x="95" y="50" font-size="14">O</text>
+
+                                            <circle cx="100" cy="60" r="2" fill="#000000"/>
+
+                                            <path d="M 180 100 L 170 100 L 170 90 L 180 90" stroke="black" stroke-width="1" fill="none"/>
+                                            <path d="M 20 100 L 30 100 L 30 90 L 20 90" stroke="black" stroke-width="1" fill="none"/>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <div style="width: 45%; font-size: 24px;">
+                                    <p><strong>Доказательство:</strong></p>
+                                    <div style="line-height: 1; font-size: 20px; text-align: justify;">
+                                        <p class="fragment">1. Рассмотрим прямоугольник $ABCD$.</p>
+                                        <p class="fragment">2. $\triangle ABD$ и $\triangle DCA$:</p>
+                                        <p class="fragment">   $AB = DC$ (противоположные стороны)</p>
+                                        <p class="fragment">   $AD$ - общая сторона</p>
+                                        <p class="fragment">   $\angle BAD = \angle CDA = 90^{\circ}$.</p>
+                                        <p class="fragment">3. $\triangle ABD = \triangle DCA$ по двум сторонам и углу между ними.</p>
+                                        <p class="fragment">4. Следовательно, $BD = AC$.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; height: 600px;">
+                            <h3>Признаки прямоугольника</h3>
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-grow: 1; margin-top: 30px;">
+
+                                <div style="width: 45%;">
+                                    <p style="font-size: 20px;"><strong>1. Если в параллелограмме один из углов прямой, то этот параллелограмм является прямоугольником.</strong></p>
+                                    <p style="font-size: 20px;"><strong>Дано: </strong>$ABCD$ - параллелограмм <br> $\angle BAD = 90^{\circ}$</p>
+                                    <div style="position: relative;">
+                                        <svg width="300" height="180" viewBox="0 0 200 120">
+                                            <!-- Прямоугольник -->
+                                            <rect x="20" y="20" width="160" height="80" stroke="black" stroke-width="2" fill="none"/>
+
+                                            <!-- Вершины -->
+                                            <text x="5" y="115" font-size="14">A</text>
+                                            <text x="185" y="115" font-size="14">D</text>
+                                            <text x="185" y="20" font-size="14">C</text>
+                                            <text x="5" y="20" font-size="14">B</text>
+
+                                            <path d="M 20 100 L 30 100 L 30 90 L 20 90" stroke="black" stroke-width="1" fill="none"/>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <div style="width: 55%; font-size: 24px; margin-left: 70px;">
+                                    <p><strong>Доказательство:</strong></p>
+                                    <div style="text-align: justify; line-height: 1; font-size: 20px; margin-left: 70px;">
+                                        <p class="fragment">1. По свойству параллелограмма противоположные углы равны, значит $\angle BCD = \angle BAD = 90^{\circ}$.</p>
+                                        <p class="fragment">2. По свойству $AB \Vert CD$ и секущей $AD$: $\angle BAD + \angle CDA = 180^{\circ}$ (односторонние углы).</p>
+                                        <p class="fragment">3. $\angle CDA = 180^{\circ} - \angle BAD = 180^{\circ} - 90^{\circ} = 90^{\circ}$.</p>
+                                        <p class="fragment">4. Сумма углов четырёхугольника равна $360^{\circ} \Rightarrow$ <br> $\Rightarrow \angle ABD = 360^{\circ} - \angle BAD - \angle ADC - \angle BCD =$ <br>$ = 360^{\circ} - 90^{\circ} - 90^{\circ} - 90^{\circ} = 90^{\circ}$.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; height: 600px;">
+                            <h3>Признаки прямоугольника</h3>
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-grow: 1; margin-top: 30px;">
+
+                                <div style="width: 45%;">
+                                    <p style="font-size: 20px;"><strong>2. Если в четырёхугольнике три угла прямые, то этот четырёхугольник является прямоугольником.</strong></p>
+                                    <p style="font-size: 20px;"><strong>Дано: </strong>$ABCD$ - четырёхугольник<br> $\angle A = \angle B = \angle C = 90^{\circ}$</p>
+                                    <div style="position: relative;">
+                                        <svg width="300" height="180" viewBox="0 0 200 120">
+                                            <!-- Прямоугольник -->
+                                            <rect x="20" y="20" width="160" height="80" stroke="black" stroke-width="2" fill="none"/>
+
+                                            <!-- Вершины -->
+                                            <text x="5" y="115" font-size="14">A</text>
+                                            <text x="185" y="115" font-size="14">D</text>
+                                            <text x="185" y="20" font-size="14">C</text>
+                                            <text x="5" y="20" font-size="14">B</text>
+
+                                            <path d="M 20 20 L 30 20 L 30 30 L 20 30" stroke="black" stroke-width="1" fill="none"/>
+                                            <path d="M 180 20 L 170 20 L 170 30 L 180 30" stroke="black" stroke-width="1" fill="none"/>
+                                            <path d="M 20 100 L 30 100 L 30 90 L 20 90" stroke="black" stroke-width="1" fill="none"/>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <div style="width: 50%; font-size: 24px; margin-left: 0px;">
+                                    <p><strong>Доказательство:</strong></p>
+                                    <div style="text-align: justify; line-height: 1; font-size: 20px; margin-left: 20px;">
+                                        <p class="fragment">1. Сумма углов четырёхугольника равна $360^{\circ} \Rightarrow$ <br> $\Rightarrow \angle ADC = 360^{\circ} - \angle BAD - \angle ABC - \angle BCD =$ <br>$ = 360^{\circ} - 90^{\circ} - 90^{\circ} - 90^{\circ} = 90^{\circ}$.</p>
+                                        <p class="fragment">2. По признаку $ABCD$ - параллелограмм (противоположные углы попарно равны).</p>
+                                        <p class="fragment">3. $ABCD$ - параллелограмм, $\angle BAD = 90^{\circ} \Rightarrow$ <br> $\Rightarrow ABCD$ - прямоугольник по признаку (параллелограмм с прямым углом).</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; height: 600px;">
+                            <h3>Признаки прямоугольника</h3>
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-grow: 1; margin-top: 30px;">
+
+                                <div style="width: 45%;">
+                                    <p style="font-size: 20px;"><strong>3. Если в параллелограмме диагонали равны, то этот параллелограмм является прямоугольником.</strong></p>
+                                    <p style="font-size: 20px;"><strong>Дано: </strong>$ABCD$ - параллелограмм <br> $AC = BD$</p>
+                                    <div style="position: relative;">
+                                        <svg width="300" height="180" viewBox="0 0 200 120">
+                                            <!-- Прямоугольник -->
+                                            <rect x="20" y="20" width="160" height="80" stroke="black" stroke-width="2" fill="none"/>
+
+                                            <!-- Вершины -->
+                                            <text x="5" y="115" font-size="14">A</text>
+                                            <text x="185" y="115" font-size="14">D</text>
+                                            <text x="185" y="20" font-size="14">C</text>
+                                            <text x="5" y="20" font-size="14">B</text>
+                                            <text x="95" y="50" font-size="14">O</text>
+
+                                             <circle cx="100" cy="60" r="2" fill="#000000"/>
+
+                                            <line x1="55" y1="45" x2="65" y2="35" stroke="black" stroke-width="2"/>
+                                            <line x1="55" y1="75" x2="65" y2="85" stroke="black" stroke-width="2"/>
+                                            <line x1="135" y1="35" x2="145" y2="45" stroke="black" stroke-width="2"/>
+                                            <line x1="135" y1="85" x2="145" y2="75" stroke="black" stroke-width="2"/>
+
+                                            <line x1="20" y1="20" x2="180" y2="100" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+                                            <line x1="180" y1="20" x2="20" y2="100" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <div style="width: 50%; font-size: 24px; margin-left: -10px;">
+                                    <p><strong>Доказательство:</strong></p>
+                                    <div style="text-align: left; line-height: 1; font-size: 20px; margin-left: -10px;">
+                                        <p class="fragment">1. По свойству параллелограмма диагонали точкой пересечения делятся пополам: $AO = OC, ~ BO = OD$.</p>
+                                        <p class="fragment">2. $AC = BD, ~ AO = OC, ~ BO = OD \Rightarrow$ $\Rightarrow AO = OC = BO = OD$.</p>
+                                        <p class="fragment">3. $\triangle ABC: BO = AO = OC = \frac{1}{2}AC \Rightarrow$ $\Rightarrow \angle ABC = 90^{\circ}$ - по признаку прямоугольного треугольника.</p>
+                                        <p class="fragment">4. $ABCD$ - параллелограмм, $\angle ABC = 90^{\circ} \Rightarrow ABCD$ - прямоугольник по признаку (параллелограмм с прямым углом).</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; height: 600px;">
+                            <h2>Ромб</h2>
+
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-grow: 1; margin-top: 150px;">
+
+                                <div style="width: 45%;">
+                                    <p style="font-size: 28px;"><strong>Ромб</strong> - параллелограмм, у которого все стороны равны.</p>
+                                </div>
+
+                                <div style="width: 35%;">
+                                    <div style="position: relative; margin-top: -50px;">
+                                        <svg width="300" height="240" viewBox="-40 -10 200 180">
+                                            <!-- Ромб -->
+                                            <polygon points="60,10 100,80 60,150 20,80" stroke="black" stroke-width="2" fill="none"/>
+
+                                            <!-- Черточки равных сторон -->
+                                            <line x1="30" y1="45" x2="50" y2="50" stroke="black" stroke-width="2"/>
+                                            <line x1="30" y1="115" x2="50" y2="105" stroke="black" stroke-width="2"/>
+                                            <line x1="90" y1="115" x2="70" y2="105" stroke="black" stroke-width="2"/>
+                                            <line x1="90" y1="45" x2="70" y2="50" stroke="black" stroke-width="2"/>
+
+                                            <!-- Вершины -->
+                                            <text x="55" y="5" font-size="14" style="font-weight: normal;">B</text>
+                                            <text x="105" y="80" font-size="14" style="font-weight: normal;">C</text>
+                                            <text x="55" y="170" font-size="14" style="font-weight: normal;">D</text>
+                                            <text x="5" y="80" font-size="14" style="font-weight: normal;">A</text>
+                                        </svg>
+                                    </div>
+
+                                    <div style="font-size: 20px; text-align: center; position: relative; margin-top: 0px;">
+                                        <p>$AB = BC = CD = DA$</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h5>Ромб - частный случай параллелограмма, поэтому обладает всеми свойствами параллелограмма</h5>
+                    </section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; height: 600px;">
+                            <h3>Свойства ромба</h3>                            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-grow: 1; margin-top: 20px;">
+
+                                <div style="width: 45%;">
+                                    <div style="font-size: 24px; margin-bottom: 30px;">
+                                        <p><strong>Дополнительнык свойства ромба:</strong></p>
+                                        <p style="font-size: 20px;"><strong>1.</strong> Диагонали являются биссектрисами углов</p>
+                                        <p style="font-size: 20px;"><strong>2.</strong> Диагонали перпендикулярны друг другу</p>
+                                        <p style="font-size: 20px;"><strong>Дано: </strong>$ABCD$ - ромб</p>
+                                    </div>
+
+                                    <div style="position: relative; margin-left: 80px;">
+                                        <svg width="300" height="240" viewBox="0 -10 200 180">
+                                             <!-- Ромб  -->
+                                            <polygon points="60,10 100,80 60,150 20,80" stroke="black" stroke-width="2" fill="none"/>
+
+                                            <!-- Диагонали -->
+                                            <line x1="60" y1="10" x2="60" y2="150" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+                                            <line x1="100" y1="80" x2="20" y2="80" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+
+                                            <!-- Точка пересечения O -->
+                                            <circle cx="60" cy="80" r="3" fill="black"/>
+                                            <text x="65" y="70" font-size="14" style="font-weight: normal;">O</text>
+
+
+                                            <!-- Черточки равных сторон -->
+                                            <line x1="30" y1="45" x2="50" y2="50" stroke="black" stroke-width="2"/>
+                                            <line x1="30" y1="115" x2="50" y2="105" stroke="black" stroke-width="2"/>
+                                            <line x1="90" y1="115" x2="70" y2="105" stroke="black" stroke-width="2"/>
+                                            <line x1="90" y1="45" x2="70" y2="50" stroke="black" stroke-width="2"/>
+
+                                            <!-- Вершины -->
+                                            <text x="55" y="5" font-size="14" style="font-weight: normal;">B</text>
+                                            <text x="105" y="80" font-size="14" style="font-weight: normal;">C</text>
+                                            <text x="55" y="170" font-size="14" style="font-weight: normal;">D</text>
+                                            <text x="5" y="80" font-size="14" style="font-weight: normal;">A</text>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <div style="width: 45%;">
+                                    <p style="font-size: 20px;"><strong>Доказательство:</strong></p>
+                                    <div style="text-align: justify; line-height: 1.4; font-size: 18px; margin-left: 50px;">
+                                        <p class="fragment"><strong>1. Диагонали - биссектрисы:</strong></p>
+                                        <p class="fragment">$\triangle ABD$ - равнобедренный ($AB = AD$ как стороны ромба)</p>
+                                        <p class="fragment">$AO$ - медиана $\Rightarrow$ $AO$ - биссектриса</p>
+
+                                        <p class="fragment" style="margin-top: 15px;"><strong>2. Диагонали перпендикулярны:</strong></p>
+                                        <p class="fragment">$\triangle AOB$ и $\triangle AOD$:</p>
+                                        <p class="fragment">$AB = AD$ (стороны ромба)</p>
+                                        <p class="fragment">$AO$ - общая</p>
+                                        <p class="fragment">$OB = OD$ (диагонали параллелограмма точкой пересечения делятся пополам)</p>
+                                        <p class="fragment">$\triangle AOB = \triangle AOD \Rightarrow \angle AOB = \angle AOD = 90^{\circ}$</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; height: 600px;">
+                            <h3>Признаки ромба</h3>
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-grow: 1; margin-top: 30px;">
+
+                                <div style="width: 45%;">
+                                    <p style="font-size: 20px;"><strong>1. Если в параллелограмме диагонали перпендикулярны друг другу, то этот параллелограмм является ромбом.</strong></p>
+                                    <p style="font-size: 20px;"><strong>Дано: </strong>$ABCD$ - параллелограмм <br> $AD \bot BC$</p>
+                                    <div style="position: relative; margin-left: 80px;">
+                                        <svg width="300" height="240" viewBox="0 -10 200 180">
+                                             <!-- Ромб  -->
+                                            <polygon points="60,10 100,80 60,150 20,80" stroke="black" stroke-width="2" fill="none"/>
+
+                                            <!-- Диагонали -->
+                                            <line x1="60" y1="10" x2="60" y2="150" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+                                            <line x1="100" y1="80" x2="20" y2="80" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+
+                                            <!-- Точка пересечения O -->
+                                            <circle cx="60" cy="80" r="3" fill="black"/>
+                                            <text x="65" y="70" font-size="14" style="font-weight: normal;">O</text>
+
+                                            <path d="M 60 80 L 50 80 L 50 70 L 60 70" stroke="black" stroke-width="1" fill="none"/>
+
+                                            <!-- Черточки равных сторон -->
+                                            <line x1="30" y1="45" x2="50" y2="50" stroke="black" stroke-width="2"/>
+                                            <line x1="30" y1="115" x2="50" y2="105" stroke="black" stroke-width="2"/>
+                                            <line x1="90" y1="115" x2="70" y2="105" stroke="black" stroke-width="2"/>
+                                            <line x1="90" y1="45" x2="70" y2="50" stroke="black" stroke-width="2"/>
+
+                                            <!-- Вершины -->
+                                            <text x="55" y="5" font-size="14" style="font-weight: normal;">B</text>
+                                            <text x="105" y="80" font-size="14" style="font-weight: normal;">C</text>
+                                            <text x="55" y="170" font-size="14" style="font-weight: normal;">D</text>
+                                            <text x="5" y="80" font-size="14" style="font-weight: normal;">A</text>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <div style="width: 50%; font-size: 24px; margin-left: 50px;">
+                                    <p><strong>Доказательство:</strong></p>
+                                    <div style="text-align: justify; line-height: 1; font-size: 20px; margin-left: 40px;">
+                                        <p class="fragment">1. По свойству параллелограмма (диагонали точкой пересечения делятся пополам): $AO = OC, ~ BO = OD$.</p>
+                                        <p class="fragment">2. По признаку равенства прямоугольных треугольников (по двум катетам): $\triangle AOB = \triangle COD = \triangle COD = \triangle AOD$.</p>
+                                        <p class="fragment">3. Т.к. в равных треугольниках соответственные элементы равны, то $AB = BC = CD = DA$.</p>
+                                        <p class="fragment">4. $ABCD$ - параллелограмм и $AB = BC = CD = DA$, тогда $ABCD$ - ромб по определению.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; height: 600px;">
+                            <h3>Признаки ромба</h3>
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-grow: 1; margin-top: 30px;">
+
+                                <div style="width: 45%;">
+                                    <p style="font-size: 20px;"><strong>2. Если в параллелограмме диагонали являются биссектрисами углов, то этот параллелограмм является ромбом.</strong></p>
+                                    <p style="font-size: 20px;"><strong>Дано: </strong> $ABCD$ - параллелограмм <br> $BD$ - биссектриса $\angle ABC$ <br> $BD$ - биссектриса $\angle ADC$</p>
+                                    <div style="position: relative;">
+                                        <svg width="300" height="240" viewBox="-10 -10 210 180">
+                                             <!-- Ромб  -->
+                                            <polygon points="60,10 100,80 60,150 20,80" stroke="black" stroke-width="2" fill="none"/>
+
+                                            <!-- Диагонали -->
+                                            <line x1="60" y1="10" x2="60" y2="150" stroke="black" stroke-width="1" stroke-dasharray="4,5"/>
+                                            <line x1="100" y1="80" x2="20" y2="80" stroke="black" stroke-width="1" stroke-dasharray="4,5"/>
+
+                                            <!-- Точка пересечения O -->
+                                            <circle cx="60" cy="80" r="3" fill="black"/>
+                                            <text x="65" y="70" font-size="14" style="font-weight: normal;">O</text>
+
+                                            <path d="M 55 20 A 1 1 0 0 0 60 25" fill="none" stroke="black"/>
+                                            <path d="M 65 20 A 1 1 0 0 1 60 25" fill="none" stroke="black"/>
+                                            <path d="M 55 140 A 1 1 0 0 1 60 135" fill="none" stroke="black"/>
+                                            <path d="M 65 140 A 1 1 0 0 0 60 135" fill="none" stroke="black"/>
+
+
+                                            <!-- Черточки равных сторон -->
+                                            <line x1="30" y1="45" x2="50" y2="50" stroke="black" stroke-width="2"/>
+                                            <line x1="30" y1="115" x2="50" y2="105" stroke="black" stroke-width="2"/>
+                                            <line x1="90" y1="115" x2="70" y2="105" stroke="black" stroke-width="2"/>
+                                            <line x1="90" y1="45" x2="70" y2="50" stroke="black" stroke-width="2"/>
+
+                                            <!-- Вершины -->
+                                            <text x="55" y="5" font-size="14" style="font-weight: normal;">B</text>
+                                            <text x="105" y="80" font-size="14" style="font-weight: normal;">C</text>
+                                            <text x="55" y="170" font-size="14" style="font-weight: normal;">D</text>
+                                            <text x="5" y="80" font-size="14" style="font-weight: normal;">A</text>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <div style="width: 60%; font-size: 24px; margin-left: 50px;">
+                                    <p><strong>Доказательство:</strong></p>
+                                    <div style="text-align: justify; line-height: 1; font-size: 20px; margin-left: 50px;">
+                                        <p class="fragment">1. По свойству параллелограмма (диагонали точкой пересечения делятся пополам): $AO = OC, ~ BO = OD$.</p>
+                                        <p class="fragment">2. По свойству параллелограмма (противоположные углы равны): $\angle ABC = \angle ADC$ <br> $BD$ - биссектриса углов $\angle ABC$ и $\angle ADC$, <br> значит $\angle ABO = \angle CBO = \angle CDO = \angle ADO$.</p>
+                                        <p class="fragment">3. По признаку равенства треугольников (по двум  сторонам и углу между ними): $\triangle AOB = \triangle COD = \triangle COD = \triangle AOD$.</p>
+                                        <p class="fragment">3. Т.к. в равных треугольниках соответственные элементы равны, то $AB = BC = CD = DA$.</p>
+                                        <p class="fragment">4. $ABCD$ - параллелограмм, $AB = BC = CD = DA$, тогда $ABCD$ - ромб по определению.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; height: 600px;">
+                            <h2>Квадрат</h2>
+
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-grow: 1; margin-top: 150px;">
+
+                                <div style="width: 45%;">
+                                    <p style="font-size: 28px;"><strong>Квадрат</strong> - правильный четырёхугольник, у которого все стороны и углы равны.</p>
+                                </div>
+
+                                <div style="width: 45%;">
+                                    <div style="position: relative; margin-top: -100px;">
+                                        <svg width="400" height="320" viewBox="-40 0 200 160">
+                                            <!-- Квадрат -->
+                                                <polygon points="20,20 100,20 100,100 20,100" stroke="black" stroke-width="2" fill="none"/>
+
+                                            <!-- Черточки равных сторон -->
+                                            <line x1="60" y1="15" x2="60" y2="25" stroke="black" stroke-width="2"/>
+                                            <line x1="60" y1="95" x2="60" y2="105" stroke="black" stroke-width="2"/>
+                                            <line x1="15" y1="60" x2="25" y2="60" stroke="black" stroke-width="2"/>
+                                            <line x1="95" y1="60" x2="105" y2="60" stroke="black" stroke-width="2"/>
+
+                                            <!-- Вершины -->
+                                            <text x="10" y="15" font-size="14" style="font-weight: normal;">B</text>
+                                            <text x="10" y="110" font-size="14" style="font-weight: normal;">A</text>
+                                            <text x="105" y="110" font-size="14" style="font-weight: normal;">D</text>
+                                            <text x="105" y="15" font-size="14" style="font-weight: normal;">C</text>
+
+                                            <path d="M 20 20 L 30 20 L 30 30 L 20 30" stroke="black" stroke-width="1" fill="none"/>
+                                            <path d="M 100 20 L 90 20 L 90 30 L 100 30" stroke="black" stroke-width="1" fill="none"/>
+                                            <path d="M 100 100 L 90 100 L 90 90 L 100 90" stroke="black" stroke-width="1" fill="none"/>
+                                            <path d="M 20 100 L 30 100 L 30 90 L 20 90" stroke="black" stroke-width="1" fill="none"/>
+                                        </svg>
+                                    </div>
+
+                                    <div style="font-size: 20px; text-align: center; position: relative; margin-top: -100px;">
+                                        <p>$AB = BC = CD = DA$</p>
+                                        <p>$\angle A = \angle B = \angle C = \angle D$</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h5>Квадрат - частный случай прямоугольника и ромба, а значит обладает всеми свойствами прямоугольника и ромба</h5>
+                    </section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; height: 600px;">
+                            <h3>Свойства квадрата</h3>
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-grow: 1; margin-top: 30px;">
+                                <div style="width: 45%; font-size: 24px;">
+                                    <p><strong>Свойства:</strong></p>
+                                    <div style="text-align: left; line-height: 1; font-size: 20px;">
+                                        <p>1. Все стороны квадрата равны.</p>
+                                        <p>2. Все углы квадрата прямые.</p>
+                                        <p>3. Диагонали квадрата равны.</p>
+                                        <p>4. Диагонали квадрата являются биссектрисами углов квадрата.</p>
+                                        <p>5. Диагонали точкой пересечения делятся пополам.</p>
+                                        <p>6. Диагонали перпендикулярны друг другу.</p>
+                                    </div>
+                                </div>
+                                <div style="width: 45%;">
+                                    <div style="position: relative; margin-top: 50px;">
+                                        <svg width="400" height="240" viewBox="-30 0 200 120">
+                                            <!-- Квадрат -->
+                                            <rect x="20" y="20" width="80" height="80" stroke="black" stroke-width="2" fill="none"/>
+
+                                            <!-- Диагонали -->
+                                            <line x1="20" y1="20" x2="100" y2="100" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+                                            <line x1="20" y1="100" x2="100" y2="20" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+
+                                            <circle cx="60" cy="60" r="2" fill="black"/>
+
+                                            <!-- Вершины -->
+                                            <text x="5" y="115" font-size="14">A</text>
+                                            <text x="105" y="115" font-size="14">D</text>
+                                            <text x="105" y="20" font-size="14">C</text>
+                                            <text x="5" y="20" font-size="14">B</text>
+                                            <text x="65" y="65" font-size="14">O</text>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; height: 600px;">
+                            <h3>Признаки квадрата</h3>
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-grow: 1; margin-top: 30px;">
+
+                                <div style="width: 45%;">
+                                    <p style="font-size: 20px;"><strong>1. Если в прямоугольнике соседние стороны равны, то этот прямоугольник является квадаратом.</strong></p>
+                                    <p style="font-size: 20px;"><strong>Дано: </strong> $ABCD$ - прямоугольник <br> $AB = BC$</p>
+                                    <div style="position: relative; margin-left: 20px;">
+                                        <svg width="400" height="240" viewBox="-30 0 200 120">
+                                            <!-- Квадрат -->
+                                            <rect x="20" y="20" width="80" height="80" stroke="black" stroke-width="2" fill="none"/>
+
+                                            <!-- Диагонали -->
+                                            <line x1="20" y1="20" x2="100" y2="100" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+                                            <line x1="20" y1="100" x2="100" y2="20" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+
+                                            <!-- Вершины -->
+                                            <text x="5" y="115" font-size="14">A</text>
+                                            <text x="105" y="115" font-size="14">D</text>
+                                            <text x="105" y="20" font-size="14">C</text>
+                                            <text x="5" y="20" font-size="14">B</text>
+                                            <text x="65" y="65" font-size="14">O</text>
+
+                                            <circle cx="60" cy="60" r="2" fill="black"/>
+                                        </svg>
+                                    </div>
+                                </div>
+
+
+                                <div style="width: 50%; font-size: 24px; margin-left: -10px;">
+                                    <p><strong>Доказательство:</strong></p>
+                                    <div style="line-height: 1; font-size: 20px; margin-left: -10px; text-align: justify;">
+                                        <p class="fragment">1. $ABCD$ - прямоугольник (соответственно и параллелограмм), тогда по свойству параллелограмма (противоположные стороны равны) $AB = CD, ~ BC = AD$.</p>
+                                        <p class="fragment">2. Т.к. $AB = BC$, то $AB = BC = CD = AD$.</p>
+                                        <p class="fragment">3. $AB = BC$, то $AB = BC = CD = AD$.</p>
+                                        <p class="fragment">4. $ABCD$ - прямоугольник, тогда по определению прямоугольника $\angle A = \angle B = \angle C = \angle D = 90^{\circ}$.</p>
+                                        <p class="fragment">5. $(3) + (4) \Rightarrow ABCD$ - квадрат по определению.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; height: 600px;">
+                            <h3>Признаки квадрата</h3>
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-grow: 1; margin-top: 30px;">
+
+                                <div style="width: 45%;">
+                                    <p style="font-size: 20px;"><strong>2. Если диагонали прямоугольника перпендикулярны, то этот прямоугольник является квадаратом.</strong></p>
+                                    <p style="font-size: 20px;"><strong>Дано: </strong> $ABCD$ - прямоугольник <br> $AC \bot BD$</p>
+                                    <div style="position: relative; margin-left: 20px;">
+                                        <svg width="400" height="240" viewBox="-30 0 200 120">
+                                            <!-- Квадрат -->
+                                            <rect x="20" y="20" width="80" height="80" stroke="black" stroke-width="2" fill="none"/>
+
+                                            <!-- Диагонали -->
+                                            <line x1="20" y1="20" x2="100" y2="100" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+                                            <line x1="20" y1="100" x2="100" y2="20" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+
+                                            <!-- Вершины -->
+                                            <text x="5" y="115" font-size="14">A</text>
+                                            <text x="105" y="115" font-size="14">D</text>
+                                            <text x="105" y="20" font-size="14">C</text>
+                                            <text x="5" y="20" font-size="14">B</text>
+                                            <text x="65" y="65" font-size="14">O</text>
+
+                                            <circle cx="60" cy="60" r="2" fill="black"/>
+
+                                            <path d="M 60 60 L 54 66 L 48 60 L 54 54" stroke="black" stroke-width="1" fill="none"/>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <div style="width: 50%; font-size: 24px; margin-left: -10px;">
+                                    <p><strong>Доказательство:</strong></p>
+                                    <div style="line-height: 1; font-size: 20px; margin-left: -10px; text-align: justify;">
+                                        <p class="fragment">1. По свойству параллелограмма (диагонали точкой пересечения делятся пополам): $AO = OC, ~ BO = OD$.</p>
+                                        <p class="fragment">2. По свойству прямоугольника (диагонали равны) $AC = BD$.</p>
+                                        <p class="fragment">3. $(1) + (2) \Rightarrow AO = BO = CO = DO$.</p>
+                                        <p class="fragment">4. По признаку равенства прямоугольных треугольников (по двум катетам): $\triangle AOB = \triangle COD = \triangle COD = \triangle AOD$.</p>
+                                        <p class="fragment">5. Т.к. в равных треугольниках соответственные элементы равны, то $AB = BC = CD = DA$.</p>
+                                        <p class="fragment">6. $ABCD$ - прямоугольник, тогда по определению прямоугольника $\angle A = \angle B = \angle C = \angle D = 90^{\circ}$.</p>
+                                        <p class="fragment">5. $(5) + (6) \Rightarrow ABCD$ - квадрат по определению.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; height: 600px;">
+                            <h3>Признаки квадрата</h3>
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-grow: 1; margin-top: 30px;">
+
+                                <div style="width: 45%;">
+                                    <p style="font-size: 20px;"><strong>3. Если один из углов ромба прямой, то этот ромб является квадаратом.</strong></p>
+                                    <p style="font-size: 20px;"><strong>Дано: </strong> $ABCD$ - ромб <br> $\angle A = 90^{\circ}$</p>
+                                    <div style="position: relative; margin-left: 20px;">
+                                        <svg width="400" height="240" viewBox="-30 0 200 120">
+                                            <!-- Квадрат -->
+                                            <rect x="20" y="20" width="80" height="80" stroke="black" stroke-width="2" fill="none"/>
+
+                                            <!-- Вершины -->
+                                            <text x="5" y="115" font-size="14">A</text>
+                                            <text x="105" y="115" font-size="14">D</text>
+                                            <text x="105" y="20" font-size="14">C</text>
+                                            <text x="5" y="20" font-size="14">B</text>
+
+                                            <path d="M 20 100 L 20 90 L 30 90 L 30 100" stroke="black" stroke-width="1" fill="none"/>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <div style="width: 55%; font-size: 24px; margin-left: -10px;">
+                                    <p><strong>Доказательство:</strong></p>
+                                    <div style="text-align: left; line-height: 1; font-size: 20px; margin-left: 0px; text-align: justify;">
+                                        <p class="fragment">1. По свойству параллелограмма (противоположные углы равны): $\angle BCD = \angle BAD = 90^{\circ}$.</p>
+                                        <p class="fragment">2. Сумма углов четырёхугольника равна $360^{\circ}$, значит $\angle ABC + \angle ADC = 360^{\circ} - \angle BCD - \angle BAD =$ <br> $= 360^{\circ} - 90^{\circ} - 90^{\circ} = 180^{\circ}$</p>
+                                        <p class="fragment">3. По свойству параллелограмма (противоположные углы равны): $\angle ABC = \angle ADC$.</p>
+                                        <p class="fragment">4. $(2)+(3) \Rightarrow \angle ABC = \angle ADC = \frac{180^{\circ}}{2} = 90^{\circ}$.</p>
+                                        <p class="fragment">5. По определению ромба $AB = BC = CD = DA$; $\angle BAD = \angle ABC = \angle BCD = \angle CDA = 90^{\circ}$ <br> $ABCD$ - квадрат по определению.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; height: 600px;">
+                            <h3>Признаки квадрата</h3>
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-grow: 1; margin-top: 30px;">
+
+                                <div style="width: 45%;">
+                                    <p style="font-size: 20px;"><strong>4. Если диагонали ромба равны, то этот ромб является квадаратом.</strong></p>
+                                    <p style="font-size: 20px;"><strong>Дано: </strong> $ABCD$ - ромб <br> $AC = BD$</p>
+                                    <div style="position: relative; margin-left: 20px;">
+                                        <svg width="400" height="240" viewBox="-30 0 200 120">
+                                            <!-- Квадрат -->
+                                            <rect x="20" y="20" width="80" height="80" stroke="black" stroke-width="2" fill="none"/>
+
+                                            <!-- Диагонали -->
+                                            <line x1="20" y1="20" x2="100" y2="100" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+                                            <line x1="20" y1="100" x2="100" y2="20" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+
+                                            <circle cx="60" cy="60" r="2" fill="black"/>
+
+                                            <!-- Вершины -->
+                                            <text x="5" y="115" font-size="14">A</text>
+                                            <text x="105" y="115" font-size="14">D</text>
+                                            <text x="105" y="20" font-size="14">C</text>
+                                            <text x="5" y="20" font-size="14">B</text>
+                                            <text x="65" y="65" font-size="14">O</text>
+
+                                            <path d="M 20 100 L 20 90 L 30 90 L 30 100" stroke="black" stroke-width="1" fill="none"/>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <div style="width: 65%; font-size: 24px; margin-left: -10px;">
+                                    <p><strong>Доказательство:</strong></p>
+                                    <div style="text-align: left; line-height: 1; font-size: 16px; margin-left: 50px; text-align: justify;">
+                                        <p class="fragment">1. По свойству параллелограмма (диагонали точкой пересечения делятся пополам): $AO = OC$.</p>
+                                        <p class="fragment">2. По свойству ромба (диагонали перпендикулярны друг другу) $\angle AOB = \angle BOC = 90^{\circ}$</p>
+                                        <p class="fragment">3. По признаку равенства прямоугольных треугольников (по двум катетам): $\triangle AOB = \triangle BOC$.</p>
+                                        <p class="fragment">4. $\triangle AOB: AO = OB \Rightarrow \triangle AOB$ - равнобедренный.</p>
+                                        <p class="fragment">5. По свойству равнобедренного $\triangle AOB:$ $\angle OAB = \angle OBA$.</p>
+                                        <p class="fragment">6. Сумма углов треугольника равна $180^{\circ}:$ $\angle OAB + \angle OBA = 180^{\circ} - \angle AOB = 180^{\circ} - 90^{\circ} = 90^{\circ}$.</p>
+                                        <p class="fragment">7. $(5) + (6) \Rightarrow \angle OAB = \angle OBA = 45^{\circ}$.</p>
+                                        <p class="fragment">8. Т.к. в равных треугольниках соответственные элементы равны, а $\triangle AOB = \triangle BOC$, то $\angle OBA = \angle OBC = 45^{\circ} \Rightarrow \angle ABC = 90^{\circ}$.</p>
+                                        <p class="fragment">9. По признаку квадрата (один угол ромба прямой) $ABCD$ - квадрат.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; height: 600px;">
+                            <h2>Трапеция</h2>
+
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-grow: 1; margin-top: 150px;">
+
+                                <div style="width: 45%;">
+                                    <p style="font-size: 28px;"><strong>Трапеция</strong> - четырёхугольник, у которого две стороны параллельны, а две другие нет.</p>
+                                </div>
+
+                                <div style="width: 45%;">
+                                    <div style="position: relative; margin-top: -150px;">
+                                        <svg width="500" height="400" viewBox="-50 0 300 100">
+                                            <!-- Трапеция -->
+                                                <polygon points="60,20 120,20 190,80 20,80" stroke="black" stroke-width="2" fill="none"/>
+
+                                            <!-- Вершины -->
+                                            <text x="50" y="10" font-size="14" style="font-weight: normal;">B</text>
+                                            <text x="10" y="90" font-size="14" style="font-weight: normal;">A</text>
+                                            <text x="200" y="90" font-size="14" style="font-weight: normal;">D</text>
+                                            <text x="130" y="10" font-size="14" style="font-weight: normal;">C</text>
+
+                                        </svg>
+                                    </div>
+
+                                    <div style="font-size: 20px; text-align: center; position: relative; margin-top: -120px; margin-left: 70px;">
+                                        <p>$BC \Vert AD$</p>
+                                        <p>$AB \nparallel CD$</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; height: 600px;">
+                            <h2>Равнобокая трапеция</h2>
+
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-grow: 1; margin-top: 120px;">
+
+                                <div style="width: 45%;">
+                                    <p style="font-size: 28px;"><strong>Равнобокая трапеция</strong> - трапеция, у которой боковые стороны равны.</p>
+                                </div>
+
+                                <div style="width: 45%;">
+                                    <div style="position: relative; margin-top: -150px;">
+                                        <svg width="500" height="400" viewBox="-50 0 300 100">
+                                            <!-- Трапеция рб -->
+                                                <polygon points="60,20 120,20 160,80 20,80" stroke="black" stroke-width="2" fill="none"/>
+
+                                            <text x="50" y="10" font-size="14" style="font-weight: normal;">B</text>
+                                            <text x="10" y="90" font-size="14" style="font-weight: normal;">A</text>
+                                            <text x="170" y="90" font-size="14" style="font-weight: normal;">D</text>
+                                            <text x="130" y="10" font-size="14" style="font-weight: normal;">C</text>
+
+                                            <!-- Черточки равных сторон -->
+                                            <line x1="35" y1="45" x2="45" y2="55" stroke="black" stroke-width="2"/>
+                                            <line x1="135" y1="55" x2="145" y2="45" stroke="black" stroke-width="2"/>
+                                        </svg>
+                                    </div>
+
+                                    <div style="font-size: 20px; text-align: center; position: relative; margin-top: -120px; margin-left: 30px;">
+                                        <p>$BC \Vert AD$</p>
+                                        <p>$AB \nparallel CD$</p>
+                                        <p>$AB = CD$</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; height: 600px;">
+                            <h3>Свойства равнобокой трапеции</h3>
+
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-grow: 1; margin-top: 30px;">
+                                <div style="width: 45%; font-size: 24px;">
+                                    <div style="text-align: center; line-height: 1; font-size: 20px;">
+                                        <p><strong>1. Углы при основаниях равнобокой трапеции равны.</strong></p>
+                                        <p><strong>Дано: </strong> $ABCD$ -  равнобокая трапеция</p>
+                                    </div>
+
+
+                                    <div style="width: 45%;">
+                                        <div style="position: relative; margin-top: -50px;">
+                                            <svg width="500" height="400" viewBox="-50 0 300 100">
+                                                <!-- Трапеция рб-->
+                                                <polygon points="60,20 120,20 160,80 20,80" stroke="black" stroke-width="2" fill="none"/>
+
+                                                <!-- вершины-->
+                                                <text x="50" y="10" font-size="14" style="font-weight: normal;">B</text>
+                                                <text x="10" y="90" font-size="14" style="font-weight: normal;">A</text>
+                                                <text x="170" y="90" font-size="14" style="font-weight: normal;">D</text>
+                                                <text x="130" y="10" font-size="14" style="font-weight: normal;">C</text>
+                                                <text x="60" y="100" font-size="14" style="font-weight: normal;">H</text>
+                                                <text x="120" y="100" font-size="14" style="font-weight: normal;">M</text>
+
+                                                <!-- Черточки равных сторон -->
+                                                <line x1="35" y1="45" x2="45" y2="55" stroke="black" stroke-width="2"/>
+                                                <line x1="135" y1="55" x2="145" y2="45" stroke="black" stroke-width="2"/>
+
+                                                <path d="M 60 80 L 50 80 L 50 70 L 60 70" stroke="black" stroke-width="1" fill="none"/>
+                                                <path d="M 120 80 L 130 80 L 130 70 L 120 70" stroke="black" stroke-width="1" fill="none"/>
+
+                                                <!-- Высоты -->
+                                                <line x1="120" y1="20" x2="120" y2="80" stroke="black" stroke-width="1" stroke-dasharray="4"/>
+                                                <line x1="60" y1="20" x2="60" y2="80" stroke="black" stroke-width="1" stroke-dasharray="4"/>
+
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="width: 50%;">
+                                    <p style="font-size: 20px;"><strong>Доказательство:</strong></p>
+                                    <div style="text-align: justify; line-height: 1.4; font-size: 16px; margin-left: 40px;">
+                                        <p class="fragment">1. $BH \bot AD, ~ CM \bot AD ~ \Rightarrow BH ~ \Vert CM$ <br> по признаку  $BH \Vert CM$ и секущей $AD$ (односторонние углы $\angle BHM$, $\angle CMD$ равны).</p>
+                                        <p class="fragment">2. $BH \Vert CM, ~ BC \Vert AD, ~ \angle BHM = 90^{\circ} ~ \Rightarrow BHMC$  - прямоугольник по признаку.</p>
+                                        <p class="fragment">3. $BHMC$  - прямоугольник $\Rightarrow BH = CM$ - по свойству прямоугольника.</p>
+                                        <p class="fragment">4. По признаку равенства прямоугольных треугольников (по катету и гипотенузе) $\triangle ABH = \triangle DCM$ $(AB = CD, ~ BH = CM)$.</p>
+                                        <p class="fragment">5. В равных треугольниках соответственные элементы равны, значит $\angle BAH = \angle CDM$.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; height: 600px;">
+                            <h3>Свойства равнобокой трапеции</h3>
+
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-grow: 1; margin-top: 30px;">
+                                <div style="width: 45%; font-size: 24px;">
+                                    <div style="text-align: center; line-height: 1; font-size: 20px; margin-left: 50px;">
+                                        <p><strong>2. Диагонали равнобокой трапеции равны.</strong></p>
+                                        <p><strong>Дано: </strong> $ABCD$ -  равнобокая трапеция</p>
+                                    </div>
+
+                                    <div style="width: 45%;">
+                                        <div style="position: relative; margin-top: -50px;">
+                                            <svg width="500" height="400" viewBox="-50 0 300 100">
+                                                <!-- Трапеция рб-->
+                                                <polygon points="60,20 120,20 160,80 20,80" stroke="black" stroke-width="2" fill="none"/>
+
+                                                <!-- вершины-->
+                                                <text x="50" y="10" font-size="14" style="font-weight: normal;">B</text>
+                                                <text x="10" y="90" font-size="14" style="font-weight: normal;">A</text>
+                                                <text x="170" y="90" font-size="14" style="font-weight: normal;">D</text>
+                                                <text x="130" y="10" font-size="14" style="font-weight: normal;">C</text>
+                                                <text x="85" y="32" font-size="12" style="font-weight: normal;">O</text>
+
+                                                <!-- Черточки равных сторон -->
+                                                <line x1="35" y1="45" x2="45" y2="55" stroke="black" stroke-width="2"/>
+                                                <line x1="135" y1="55" x2="145" y2="45" stroke="black" stroke-width="2"/>
+
+                                                <!-- Диагонали -->
+                                                <line x1="20" y1="80" x2="120" y2="20" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+                                                <line x1="60" y1="20" x2="160" y2="80" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+
+                                                <circle cx="90" cy="38" r="2" fill="black"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="width: 45%;">
+                                    <p style="font-size: 20px;"><strong>Доказательство:</strong></p>
+                                    <div style="text-align: justify; line-height: 1.4; font-size: 18px;">
+                                        <p class="fragment">1. $AB = CD, ~ AD$ - общая, <br> $\angle BAD = \angle CDA$ - по свойству р/б трапеции, значит $\triangle ABD = \triangle DCA$ по признаку равенства треугольников (по двум сторонам и углу между ними).</p>
+                                        <p class="fragment">2. В равных треугольниках соответственные элементы равны, значит $BD = AC$.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; height: 600px;">
+                            <h3>Признаки равнобокой трапеции</h3>
+
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-grow: 1; margin-top: 30px;">
+                                <div style="width: 45%; font-size: 24px;">
+                                    <div style="text-align: center; line-height: 1; font-size: 20px; margin-left: 50px;">
+                                        <p><strong>1. Если углы при некотором основании трапеции равны, то она равнобокая.</strong></p>
+                                        <p><strong>Дано: </strong> $ABCD$ - трапеция <br> $\angle BAD = \angle CDA$</p>
+                                    </div>
+
+                                    <div style="width: 45%;">
+                                        <div style="position: relative; margin-top: -50px;">
+                                            <svg width="500" height="400" viewBox="-50 0 300 100">
+                                                <!-- Трапеция рб-->
+                                                <polygon points="60,20 120,20 160,80 20,80" stroke="black" stroke-width="2" fill="none"/>
+
+                                                <!-- вершины-->
+                                                <text x="50" y="10" font-size="14" style="font-weight: normal;">B</text>
+                                                <text x="10" y="90" font-size="14" style="font-weight: normal;">A</text>
+                                                <text x="170" y="90" font-size="14" style="font-weight: normal;">D</text>
+                                                <text x="130" y="10" font-size="14" style="font-weight: normal;">C</text>
+                                                <text x="60" y="100" font-size="14" style="font-weight: normal;">H</text>
+                                                <text x="120" y="100" font-size="14" style="font-weight: normal;">M</text>
+
+                                                <!-- прямые углы-->
+                                                <path d="M 60 80 L 50 80 L 50 70 L 60 70" stroke="black" stroke-width="1" fill="none"/>
+                                                <path d="M 120 80 L 130 80 L 130 70 L 120 70" stroke="black" stroke-width="1" fill="none"/>
+
+                                                <!-- Высоты -->
+                                                <line x1="120" y1="20" x2="120" y2="80" stroke="black" stroke-width="1" stroke-dasharray="4"/>
+                                                <line x1="60" y1="20" x2="60" y2="80" stroke="black" stroke-width="1" stroke-dasharray="4"/>
+
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="width: 50%;">
+                                    <p style="font-size: 20px;"><strong>Доказательство:</strong></p>
+                                    <div style="text-align: justify; line-height: 1.4; font-size: 18px;">
+                                        <p class="fragment">1. $BH \bot AD, ~ CM \bot AD ~ \Rightarrow BH ~ \Vert CM$ <br> по признаку  $BH \Vert CM$ и секущей $AD$ (односторонние углы $\angle BHM$, $\angle CMD$ равны).</p>
+                                        <p class="fragment">2. $BH \Vert CM, ~ BC \Vert AD, ~ \angle BHM = 90^{\circ} ~ \Rightarrow BHMC$  - прямоугольник по признаку.</p>
+                                        <p class="fragment">3. $BHMC$  - прямоугольник $\Rightarrow BH = CM$ - по свойству прямоугольника.</p>
+                                        <p class="fragment">4. По признаку равенства прямоугольных треугольников (по катету и острому углу) $\triangle ABH = \triangle DCM$ $(\angle BAH = \angle CDM, ~ BH = CD)$.</p>
+                                        <p class="fragment">5. В равных треугольниках соответственные элементы равны, значит $AB = CD$.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div style="display: flex; flex-direction: column; height: 600px;">
+                            <h3>Признаки равнобокой трапеции</h3>
+
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-grow: 1; margin-top: 30px;">
+                                <div style="width: 45%; font-size: 24px;">
+                                    <div style="text-align: center; line-height: 1; font-size: 20px; margin-left: 50px;">
+                                        <p><strong>2. Если диагонали трапеции равны, то она равнобокая.</strong></p>
+                                        <p><strong>Дано: </strong> $ABCD$ - трапеция <br> $AC = BD$</p>
+                                    </div>
+
+
+                                    <div style="width: 45%;">
+                                        <div style="position: relative; margin-top: -50px;">
+                                            <svg width="500" height="400" viewBox="-50 0 300 100">
+                                                <!-- Трапеция рб-->
+                                                <polygon points="60,20 120,20 160,80 20,80" stroke="black" stroke-width="2" fill="none"/>
+
+                                                <!-- вершины-->
+                                                <text x="50" y="10" font-size="14" style="font-weight: normal;">B</text>
+                                                <text x="10" y="90" font-size="14" style="font-weight: normal;">A</text>
+                                                <text x="170" y="90" font-size="14" style="font-weight: normal;">D</text>
+                                                <text x="130" y="10" font-size="14" style="font-weight: normal;">C</text>
+                                                <text x="60" y="100" font-size="14" style="font-weight: normal;">H</text>
+                                                <text x="120" y="100" font-size="14" style="font-weight: normal;">M</text>
+                                                <text x="85" y="32" font-size="12" style="font-weight: normal;">O</text>
+
+                                                <!-- прямые углы-->
+                                                <path d="M 60 80 L 50 80 L 50 70 L 60 70" stroke="black" stroke-width="1" fill="none"/>
+                                                <path d="M 120 80 L 130 80 L 130 70 L 120 70" stroke="black" stroke-width="1" fill="none"/>
+
+                                                <!-- Высоты -->
+                                                <line x1="120" y1="20" x2="120" y2="80" stroke="black" stroke-width="1" stroke-dasharray="4"/>
+                                                <line x1="60" y1="20" x2="60" y2="80" stroke="black" stroke-width="1" stroke-dasharray="4"/>
+
+                                                <!-- Диагонали -->
+                                                <line x1="20" y1="80" x2="120" y2="20" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+                                                <line x1="60" y1="20" x2="160" y2="80" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+
+                                                <circle cx="90" cy="38" r="2" fill="black"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="width: 50%;">
+                                    <p style="font-size: 20px;"><strong>Доказательство:</strong></p>
+                                    <div style="text-align: justify; line-height: 1.4; font-size: 18px;">
+                                        <p class="fragment">1. $BH \bot AD, ~ CM \bot AD ~ \Rightarrow BH ~ \Vert CM$ <br> по признаку  $BH \Vert CM$ и секущей $AD$ (односторонние углы $\angle BHM$, $\angle CMD$ равны).</p>
+                                        <p class="fragment">2. $BH \Vert CM, ~ BC \Vert AD, ~ \angle BHM = 90^{\circ} ~ \Rightarrow BHMC$  - прямоугольник по признаку.</p>
+                                        <p class="fragment">3. $BHMC$  - прямоугольник $\Rightarrow BH = CM$ - по свойству прямоугольника.</p>
+                                        <p class="fragment">4. По признаку равенства прямоугольных треугольников (по катету и гипотенузе) $\triangle BHD = \triangle CMA$ $(BD = AC, ~ BH = CM)$.</p>
+                                        <p class="fragment">5. В равных треугольниках соответственные элементы равны, значит $\angle BDH = \angle CAM$.</p>
+                                        <p class="fragment">6. По признаку равенства треугольников (по двум сторонам и углу между ними): $\triangle BAD = \triangle CDA$ $(BD = CA, ~ AD$ общая, $\angle BDA = \angle CAD)$.</p>
+                                        <p class="fragment">7. Т.к в равных треугольниках соответственные элементы равны: $AB = CD$.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+            </section>
+
+        <script src="reveal.js/dist/reveal.js"></script>
+        <script src="reveal.js/plugin/math/math.js"></script>
+        <script>
+            Reveal.initialize({
+                history: true,
+                transition: 'linear',
+
+                mathjax2: {
+                    config: 'TeX-AMS_HTML-full',
+                    TeX: {
+                        Macros: {
+                            R: '\\mathbb{R}',
+                            set: [ '\\left\\{#1 \\; ; \\; #2\\right\\}', 2 ]
+                        }
+                    }
+                },
+                plugins: [ RevealMath.MathJax2 ]
+            });
+        </script>
+
+    </body>
+</html>
