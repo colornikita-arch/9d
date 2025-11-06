@@ -1,0 +1,1146 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Подобие треугольников</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="reveal.js/dist/theme/white.css" id="theme">
+		<style type="text/css" media="screen">
+			.slides section.has-dark-background,
+			.slides section.has-dark-background h2 {
+				color: #fff;
+			}
+			.slides section.has-light-background,
+			.slides section.has-light-background h2 {
+				color: #222;
+			}
+            @keyframes draw {
+                from {
+                    stroke-dashoffset: 1000;
+                }
+                to {
+                    stroke-dashoffset: 0;
+                }
+            }
+
+            .animated-triangle {
+                stroke-dasharray: 1000;
+                stroke-dashoffset: 1000;
+                animation: draw 4s ease-in-out forwards;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+
+            /* Специальные стили для первого слайда - без автоматической анимации */
+            .first-slide-triangle {
+                stroke-dasharray: 1000;
+                stroke-dashoffset: 1000;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+
+
+			.triangles-container {
+				display: flex;
+				justify-content: center;
+				align-items: flex-end;
+				gap: 150px;
+				min-height: 300px;
+			}
+
+			.triangle-wrapper {
+				position: relative;
+			}
+
+			.vertex-label {
+				font-size: 24px;
+			}
+
+			.vertex-label-small {
+				font-size: 22px;
+			}
+
+			/* Позиции для вершин треугольника ABC */
+			.vertex-a { position: absolute; bottom: 25px; left: 40px; }
+			.vertex-c { position: absolute; bottom: 25px; right: 40px; }
+			.vertex-b { position: absolute; top: 20px; left: 90px; }
+
+			/* Позиции для вершин треугольника A1B1C1 */
+			.vertex-a1 { position: absolute; bottom: 20px; left: 15px; }
+			.vertex-c1 { position: absolute; bottom: 20px; right: 15px; }
+			.vertex-b1 { position: absolute; top: -20px; left: 50px; }
+
+			/* Стили для второго слайда */
+			.definition-slide {
+				display: flex;
+				align-items: flex-start;
+				gap: 60px;
+				padding: 20px;
+			}
+
+			.definition-text {
+				flex: 1;
+				font-size: 28px;
+				line-height: 1.4;
+				text-align: left;
+				margin-left: -100px;
+			}
+
+			.definition-triangles {
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin-right: -100px;
+			}
+
+			.slide-title {
+				font-size: 42px;
+				text-align: center;
+				margin-bottom: 30px;
+			}
+
+			.properties-columns {
+				display: flex;
+				gap: 40px;
+				margin-top: 30px;
+                margin-left: 50px;
+				justify-content: center;
+			}
+
+			.properties-column {
+				flex: 1;
+				font-size: 22px;
+				text-align: center;
+				line-height: 1.6;
+				max-width: 250px;
+			}
+
+			/* Стили для плавной замены текста с анимацией */
+			.text-replacement-container {
+				position: relative;
+				min-height: 150px;
+				margin-top: 20px;
+				overflow: hidden;
+			}
+
+			.replaceable-text {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				transition: all 0.6s ease;
+				font-size: 28px;
+				line-height: 1.4;
+			}
+
+			.text-hidden {
+				opacity: 0;
+				pointer-events: none;
+			}
+
+			.text-exit {
+				opacity: 0;
+				transform: translateY(-30px);
+			}
+
+			.text-enter {
+				opacity: 0;
+				transform: translateY(30px);
+			}
+
+			.text-enter-active {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+            /* Анимации для движения треугольников */
+            @keyframes moveVertexB {
+                0%, 100% { transform: translate(0, 0) rotate(0deg); }
+                10% { transform: translate(0, -30px) rotate(5deg); }
+                20% { transform: translate(-25px, -20px) rotate(-3deg); }
+                30% { transform: translate(25px, -15px) rotate(3deg); }
+                40% { transform: translate(0, 0) rotate(0deg); }
+                50% { transform: translate(0, 60px) rotate(8deg); }
+                60% { transform: translate(0, 100px) rotate(15deg); }
+                70% { transform: translate(0, 40px) rotate(-10deg) scale(1.1); }
+                80% { transform: translate(0, 20px) rotate(5deg) scale(1.05); }
+                90% { transform: translate(0, 5px) rotate(-2deg); }
+            }
+
+            @keyframes moveVertexAC {
+                0%, 100% { transform: translate(0, 0); }
+                10% { transform: translate(0, -15px); }
+                20% { transform: translate(-15px, -10px); }
+                30% { transform: translate(15px, -12px); }
+                40% { transform: translate(0, 0); }
+                50% { transform: translate(0, -25px); }
+                60% { transform: translate(0, -40px); }
+                70% { transform: translate(0, -20px); }
+                80% { transform: translate(0, -10px); }
+                90% { transform: translate(0, -5px); }
+            }
+
+            @keyframes moveTriangle {
+                0%, 100% { d: path("M50,200 L100,50 L250,200 Z"); transform: rotate(0deg); }
+                10% { d: path("M50,200 L100,20 L250,200 Z"); }
+                20% { d: path("M45,195 L80,30 L245,195 Z"); }
+                30% { d: path("M55,205 L120,40 L255,205 Z"); }
+                40% { d: path("M50,200 L100,50 L250,200 Z"); }
+                50% { d: path("M50,180 L100,120 L250,180 Z"); transform: rotate(5deg); }
+                60% { d: path("M50,150 L100,200 L250,150 Z"); transform: rotate(15deg) scale(1.1); }
+                70% { d: path("M50,170 L100,150 L250,170 Z"); transform: rotate(-8deg) scale(1.15); }
+                80% { d: path("M50,190 L100,80 L250,190 Z"); transform: rotate(3deg) scale(1.05); }
+                90% { d: path("M50,195 L100,60 L250,195 Z"); transform: rotate(-1deg); }
+            }
+
+            @keyframes moveSmallTriangle {
+                0%, 100% { d: path("M30,100 L60,10 L150,100 Z"); transform: rotate(0deg); }
+                10% { d: path("M30,100 L60,-20 L150,100 Z"); }
+                20% { d: path("M25,95 L50,5 L145,95 Z"); }
+                30% { d: path("M35,105 L70,15 L155,105 Z"); }
+                40% { d: path("M30,100 L60,10 L150,100 Z"); }
+                50% { d: path("M30,85 L60,60 L150,85 Z"); transform: rotate(5deg); }
+                60% { d: path("M30,70 L60,100 L150,70 Z"); transform: rotate(15deg) scale(1.1); }
+                70% { d: path("M30,80 L60,75 L150,80 Z"); transform: rotate(-8deg) scale(1.15); }
+                80% { d: path("M30,95 L60,40 L150,95 Z"); transform: rotate(3deg) scale(1.05); }
+                90% { d: path("M30,98 L60,25 L150,98 Z"); transform: rotate(-1deg); }
+            }
+
+            @keyframes pulse-glow {
+                0%, 100% { filter: drop-shadow(0 0 0px rgba(0,0,0,0.3)); }
+                50% { filter: drop-shadow(0 0 8px rgba(0,100,255,0.6)); }
+                60% { filter: drop-shadow(0 0 15px rgba(255,0,100,0.8)); }
+                70% { filter: drop-shadow(0 0 10px rgba(100,255,0,0.7)); }
+            }
+
+            .animation-active .moving-triangle-path {
+                animation: moveTriangle 8s ease-in-out infinite, pulse-glow 8s ease-in-out infinite;
+            }
+
+            .animation-active .moving-small-triangle-path {
+                animation: moveSmallTriangle 8s ease-in-out infinite, pulse-glow 8s ease-in-out infinite;
+            }
+
+            .animation-active .moving-vertex-b {
+                animation: moveVertexB 8s ease-in-out infinite;
+            }
+
+            .animation-active .moving-vertex-b1 {
+                animation: moveVertexB 8s ease-in-out infinite;
+            }
+
+            .animation-active .moving-vertex-a,
+            .animation-active .moving-vertex-c,
+            .animation-active .moving-vertex-a1,
+            .animation-active .moving-vertex-c1 {
+                animation: moveVertexAC 8s ease-in-out infinite;
+            }
+
+            .moving-triangle-path {
+                fill: none;
+                stroke: black;
+                stroke-width: 2;
+                d: path("M50,200 L100,50 L250,200 Z");
+                transform-origin: center;
+            }
+
+            .moving-small-triangle-path {
+                fill: none;
+                stroke: black;
+                stroke-width: 2;
+                d: path("M30,100 L60,10 L150,100 Z");
+                transform-origin: center;
+            }
+
+            .moving-vertex-b, .moving-vertex-b1,
+            .moving-vertex-a, .moving-vertex-c,
+            .moving-vertex-a1, .moving-vertex-c1 {
+                transform-origin: center;
+            }
+
+			/* Стили для третьего слайда */
+			.similarity-signs-slide {
+				padding: 20px;
+			}
+
+			.conditions-container {
+				display: flex;
+				gap: 60px;
+				margin-top: 30px;
+				align-items: flex-start;
+			}
+
+			.left-conditions {
+				flex: 1;
+				font-size: 20px;
+				line-height: 1.6;
+			}
+
+			.right-proof {
+				flex: 1;
+				font-size: 14px;
+				line-height: 1.0;
+				text-align: left;
+				margin-right: -200px;
+				margin-left: -200px;
+				margin-top: -50px;
+				margin-bottom: -50px;
+			}
+
+			/* Стили для дужек углов */
+			.angle-arc {
+				stroke: #000000;
+				stroke-width: 2;
+				fill: none;
+			}
+
+			/* Пунктир для углов A и A1 */
+			.angle-arc-dashed {
+				stroke-dasharray: 4, 6;
+			}
+
+			.given-triangles {
+				display: flex;
+				justify-content: center;
+				gap: 100px;
+				margin: 30px 0;
+			}
+
+			.given-triangle {
+				position: relative;
+			}
+
+            /* Анимация для линии */
+            .animated-line {
+                stroke-dasharray: 300;
+                stroke-dashoffset: 300;
+                animation: draw 2.5s ease-in-out forwards;
+            }
+
+		</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<!-- Первый слайд -->
+                <!-- Первый слайд -->
+            <section>
+                <h2>Подобие треугольников</h2>
+
+                <div class="triangles-container">
+                    <!-- Первый треугольник (больший) -->
+                    <div class="triangle-wrapper">
+                        <svg width="300" height="250" viewBox="0 0 300 250">
+                            <path id="triangle1" class="first-slide-triangle" d="M50,200 L100,50 L250,200 Z" fill="none" stroke="black" stroke-width="3"/>
+                        </svg>
+                        <span id="vertex-a" class="vertex-label vertex-a" style="opacity:0">A</span>
+                        <span id="vertex-c" class="vertex-label vertex-c" style="opacity:0">C</span>
+                        <span id="vertex-b" class="vertex-label vertex-b" style="opacity:0">B</span>
+                    </div>
+
+                    <!-- Второй треугольник (меньший) -->
+                    <div class="triangle-wrapper">
+                        <svg width="180" height="150" viewBox="0 0 180 150">
+                            <path id="triangle2" class="first-slide-triangle" d="M30,100 L60,10 L150,100 Z" fill="none" stroke="black" stroke-width="3" style="animation-delay: 1.0s;"/>
+                        </svg>
+                        <span id="vertex-a1" class="vertex-label-small vertex-a1" style="opacity:0">A<sub>1</sub></span>
+                        <span id="vertex-c1" class="vertex-label-small vertex-c1" style="opacity:0">C<sub>1</sub></span>
+                        <span id="vertex-b1" class="vertex-label-small vertex-b1" style="opacity:0">B<sub>1</sub></span>
+                    </div>
+                </div>
+            </section>
+
+				<!-- Второй слайд -->
+				<section>
+					<h2 class="slide-title" style="margin-left: -100px;">Подобные треугольники</h2>
+
+					<div class="definition-slide">
+						<div class="definition-text">
+							<p><strong>Подобные треугольники</strong> — это треугольники, у которых углы равны, а соответствующие стороны пропорциональны.</p>
+
+							<div class="text-replacement-container">
+								<div id="text-first" class="replaceable-text">
+									<p>Стороны называются соответствующими, если они лежат напротив равных углов.</p>
+								</div>
+
+								<div id="text-second" class="replaceable-text text-hidden">
+									<p>Отношение соответствующих сторон называется коэффициентом подобия и обозначается \(k\).</p>
+								</div>
+
+								<div id="text-third" class="replaceable-text text-hidden">
+									<p>\(\triangle ABC \sim \triangle A_1B_1C_1\)</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="definition-triangles" id="animated-triangles">
+							<div style="display: flex; gap: 60px; align-items: flex-end;">
+								<div class="triangle-wrapper">
+									<svg width="300" height="250" viewBox="0 0 300 250">
+										<path class="moving-triangle-path" />
+									</svg>
+									<span class="vertex-label vertex-a moving-vertex-a">A</span>
+									<span class="vertex-label vertex-c moving-vertex-c">C</span>
+									<span class="vertex-label vertex-b moving-vertex-b">B</span>
+								</div>
+
+								<div class="triangle-wrapper">
+									<svg width="180" height="150" viewBox="0 -20 180 170">
+										<path class="moving-small-triangle-path" />
+									</svg>
+									<span class="vertex-label-small vertex-a1 moving-vertex-a1">A<sub>1</sub></span>
+									<span class="vertex-label-small vertex-c1 moving-vertex-c1">C<sub>1</sub></span>
+									<span class="vertex-label-small vertex-b1 moving-vertex-b1">B<sub>1</sub></span>
+								</div>
+							</div>
+
+							<div class="properties-columns">
+								<div class="properties-column">
+									<p>\(\angle A = \angle A_1\)<br>
+									\(\angle B = \angle B_1\)<br>
+									\(\angle C = \angle C_1\)</p>
+								</div>
+
+								<div class="properties-column">
+									<p>\(\frac{AB}{A_1B_1} = \frac{BC}{B_1C_1} = \frac{AC}{A_1C_1} = k\)</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="fragment" data-fragment-index="1" style="display: none;"></div>
+					<div class="fragment" data-fragment-index="2" style="display: none;"></div>
+				</section>
+                <section>
+                    <section>
+                        <h3 class="slide-title">Признаки подобия треугольников</h3>
+                        <div style="font-size: 20px; text-align: left;">
+                            <p class="fragment" data-fragment-index="1">
+                                <strong>1.</strong>  Если два угла одного треугольника равны двум углам другого треугольника, то такие треугольники подобны.
+                            </p>
+                            <p class="fragment" data-fragment-index="2">
+                                <strong>2.</strong> Если две стороны одного треугольника пропорциональны двум сторонам другого треугольника и углы между этими сторонами равны, то такие треугольники подобны.
+                            </p>
+                            <p class="fragment" data-fragment-index="3">
+                                <strong>3.</strong> Если три стороны одного треугольника пропорциональны трём сторонам другого треугольника, то такие треугольники подобны.
+                            </p>
+                        </div>
+                        <!-- В слайде с перечислением признаков -->
+                        <div class="triangles-container">
+                            <!-- Первый треугольник (больший) -->
+                            <div class="triangle-wrapper">
+                                <svg width="300" height="250" viewBox="0 0 300 250">
+                                    <path id="signs-triangle1" class="first-slide-triangle" d="M50,200 L100,50 L250,200 Z" fill="none" stroke="black" stroke-width="3"/>
+                                </svg>
+                                <span id="signs-vertex-a" class="vertex-label vertex-a" style="opacity:0">A</span>
+                                <span id="signs-vertex-c" class="vertex-label vertex-c" style="opacity:0">C</span>
+                                <span id="signs-vertex-b" class="vertex-label vertex-b" style="opacity:0">B</span>
+                            </div>
+
+                            <!-- Второй треугольник (меньший) -->
+                            <div class="triangle-wrapper">
+                                <svg width="180" height="150" viewBox="0 0 180 150">
+                                    <path id="signs-triangle2" class="first-slide-triangle" d="M30,100 L60,10 L150,100 Z" fill="none" stroke="black" stroke-width="3" style="animation-delay: 1.0s;"/>
+                                </svg>
+                                <span id="signs-vertex-a1" class="vertex-label-small vertex-a1" style="opacity:0">A<sub>1</sub></span>
+                                <span id="signs-vertex-c1" class="vertex-label-small vertex-c1" style="opacity:0">C<sub>1</sub></span>
+                                <span id="signs-vertex-b1" class="vertex-label-small vertex-b1" style="opacity:0">B<sub>1</sub></span>
+                            </div>
+                        </div>
+
+                    </section>
+                     <!-- Третий слайд -->
+                    <section class="similarity-signs-slide">
+                        <h3 class="slide-title" style="margin-left: -100px;">Признаки подобия треугольников</h3>
+
+                        <p style="font-size: 28px; text-align: center; margin-bottom: 40px; margin-left: -100px;">
+                            Если два угла одного треугольника равны двум углам другого треугольника, то такие треугольники подобны.
+                        </p>
+
+                        <div class="conditions-container">
+                            <!-- Левая часть -->
+                            <div class="left-conditions">
+                                <div style="margin-bottom: 0px; margin-left: -500px;">
+                                    <p><strong>Дано:</strong></p>
+                                    <p>\(\angle A = \angle A_1\)</p>
+                                    <p>\(\angle B = \angle B_1\)</p>
+                                </div>
+
+                                <div style="margin-top: -140px; margin-left: -10px;">
+                                    <p><strong>Доказать:</strong></p>
+                                    <p>\(\triangle ABC \sim \triangle A_1B_1C_1\)</p>
+                                </div>
+
+                                <!-- Треугольники с отметками равных углов -->
+                                <div class="triangles-container" style="margin-left: -250px; gap: 20px;">
+                                    <!-- Большой треугольник с линией внутри -->
+                                    <div class="triangle-wrapper">
+                                        <svg width="300" height="250" viewBox="0 0 300 250">
+                                            <!-- Большой треугольник -->
+                                            <path class="animated-triangle" d="M50,200 L100,50 L250,200 Z" fill="none" stroke="black" stroke-width="3"/>
+
+                                            <!-- Дужки для углов A и B - появляются по 1 пробелу -->
+                                            <path class="fragment angle-arc angle-arc-dashed" data-fragment-index="1" d="M53.5,187 Q72,180 65,200"/>
+                                            <path class="fragment angle-arc" data-fragment-index="1" d="M94,70 Q105,75 117,67"/>
+
+                                            <!-- Линия внутри треугольника - рисуется по 5 пробелу -->
+                                            <path class="fragment animated-line" data-fragment-index="4" d="M80,110 L170,200" fill="none" stroke="black" stroke-width="2"/>
+                                        </svg>
+                                        <span class="vertex-label vertex-a">A</span>
+                                        <span class="vertex-label vertex-c">C</span>
+                                        <span class="vertex-label vertex-b">B</span>
+
+                                        <!-- Точки на линии - появляются по 5 пробелу -->
+                                        <span class="fragment vertex-label-small" data-fragment-index="3" style="position: absolute; bottom: 135px; left: 45px;">B<sub>2</sub></span>
+                                        <span class="fragment vertex-label-small" data-fragment-index="4" style="position: absolute; bottom: 25px; right: 115px;">C<sub>2</sub></span>
+                                    </div>
+
+                                    <!-- Второй треугольник (отдельный маленький) -->
+                                    <div class="triangle-wrapper">
+                                        <svg width="180" height="150" viewBox="0 0 180 150">
+                                            <path class="animated-triangle" d="M30,100 L60,10 L150,100 Z" fill="none" stroke="black" stroke-width="3" style="animation-delay: 0.0s;"/>
+                                            <!-- Дужки для углов A1 и B1 - появляются по 1 пробелу -->
+                                            <path class="fragment angle-arc angle-arc-dashed" data-fragment-index="1" d="M33.5,87 Q42,86 43,100"/>
+                                            <path class="fragment angle-arc" data-fragment-index="1" d="M55,25 Q65,30 71,19"/>
+                                        </svg>
+                                        <span class="vertex-label-small vertex-a1">A<sub>1</sub></span>
+                                        <span class="vertex-label-small vertex-c1">C<sub>1</sub></span>
+                                        <span class="vertex-label-small vertex-b1">B<sub>1</sub></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Правая часть - доказательство -->
+                            <div class="right-proof">
+                                <p style="font-size: 16px"><strong>Доказательство:</strong></p>
+                                <div id="proof-steps">
+                                    <p class="fragment" data-fragment-index="2">
+                                        <strong>1.</strong> По теореме о сумме углов треугольника:<br>
+                                        \(\angle C = 180^\circ - (\angle A + \angle B)\),
+                                        \(\angle C_1 = 180^\circ - (\angle A_1 + \angle B_1)\).<br>
+                                        Так как \(\angle A = \angle A_1\) и \(\angle B = \angle B_1\),
+                                        то и \(\angle C = \angle C_1\).
+                                    </p>
+                                    <p class="fragment" data-fragment-index="3">
+                                        <strong>2.</strong> Пусть \(A_1B_1 < AB\). На луче \(AB\) отложим отрезок \(AB_2\) такой, что \(AB_2 = A_1B_1\).
+                                    </p>
+                                    <p class="fragment" data-fragment-index="4">
+                                        <strong>3.</strong> Через точку \(B_2\) проведем прямую \(B_2C_2\), параллельную прямой \(BC\).
+                                    </p>
+                                    <p class="fragment" data-fragment-index="5">
+                                        <strong>4.</strong> \(\angle AB_2C_2 = \angle ABC\) (как соответственные при \(B_2C_2 \parallel BC\) и секущей \(AB\)).<br>
+                                        Значит, \(\angle AB_2C_2 = \angle B_1\).
+                                    </p>
+                                    <p class="fragment" data-fragment-index="6">
+                                        <strong>5.</strong> В треугольниках \(AB_2C_2\) и \(A_1B_1C_1\):
+                                        \(\angle A = \angle A_1\),
+                                        \(\angle AB_2C_2 = \angle B_1\),
+                                        \(AB_2 = A_1B_1\).<br>
+                                        Значит, \(\Delta AB_2C_2 = \Delta A_1B_1C_1\) (по стороне и двум прилежащим к ней углам).
+                                    </p>
+                                    <p class="fragment" data-fragment-index="7">
+                                        <strong>6.</strong> Из равенства треугольников следует равенство соответствующих сторон:
+                                        \(AC_2 = A_1C_1\).
+                                    </p>
+                                    <p class="fragment" data-fragment-index="8">
+                                        <strong>7.</strong> По теореме о пропорциональных отрезках \(AC_2: AC = AB_2: AB\):<br>
+                                        Так как \(AB_2 = A_1B_1\) и \(AC_2 = A_1C_1\), то
+                                        \(A_1C_1: AC = A_1B_1: AB\).
+                                    </p>
+                                    <p class="fragment" data-fragment-index="9">
+                                        <strong>8.</strong> Аналогично доказывается, что \(A_1B_1: AB = B_1C_1: BC\).
+                                    </p>
+                                    <p class="fragment" data-fragment-index="10">
+                                        <strong>9.</strong> По определению подобных треугольников \(\triangle ABC \sim \triangle A_1B_1C_1\):<br>
+                                        \(\angle A = \angle A_1\), \(\angle B = \angle B_1\), \(\angle C = \angle C_1\),
+                                        \(A_1B_1: AB = B_1C_1: BC = A_1C_1: AC\).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Четвертый слайд -->
+                    <section class="similarity-signs-slide">
+                        <h3 class="slide-title" style="margin-left: -100px;">Признаки подобия треугольников</h3>
+
+                        <p style="font-size: 28px; text-align: center; margin-bottom: 40px; margin-left: -100px;">
+                            Если две стороны одного треугольника пропорциональны двум сторонам другого треугольника и углы между этими сторонами равны, то такие треугольники подобны.
+                        </p>
+
+                        <div class="conditions-container">
+                            <!-- Левая часть -->
+                            <div class="left-conditions">
+                                <div style="margin-bottom: 0px; margin-left: -500px;">
+                                    <p><strong>Дано:</strong></p>
+                                    <p>\(\angle A = \angle A_1\)</p>
+                                    <p>\(\frac{AB}{A_1B_1}=\frac{AC}{A_1C_1}\)</p>
+                                </div>
+
+                                <div style="margin-top: -150px; margin-left: -10px;">
+                                    <p><strong>Доказать:</strong></p>
+                                    <p>\(\triangle ABC \sim \triangle A_1B_1C_1\)</p>
+                                </div>
+
+                                <!-- Треугольники с отметками равных углов -->
+                                <div class="triangles-container" style="margin-left: -250px; gap: 20px;">
+                                    <!-- Большой треугольник с линией внутри -->
+                                    <div class="triangle-wrapper">
+                                        <svg width="300" height="250" viewBox="0 0 300 250">
+                                            <!-- Большой треугольник -->
+                                            <path class="animated-triangle" d="M50,200 L100,50 L250,200 Z" fill="none" stroke="black" stroke-width="3"/>
+
+                                            <!-- Дужки для углов A и B - появляются по 1 пробелу -->
+                                            <path class="fragment angle-arc" data-fragment-index="1" d="M53.5,187 Q72,180 65,200"/>
+
+                                            <!-- Линия внутри треугольника - рисуется по 5 пробелу -->
+                                            <path class="fragment animated-line" data-fragment-index="3" d="M80,110 L170,200" fill="none" stroke="black" stroke-width="2"/>
+                                        </svg>
+                                        <span class="vertex-label vertex-a">A</span>
+                                        <span class="vertex-label vertex-c">C</span>
+                                        <span class="vertex-label vertex-b">B</span>
+
+                                        <!-- Точки на линии - появляются по 5 пробелу -->
+                                        <span class="fragment vertex-label-small" data-fragment-index="2" style="position: absolute; bottom: 135px; left: 45px;">B<sub>2</sub></span>
+                                        <span class="fragment vertex-label-small" data-fragment-index="3" style="position: absolute; bottom: 25px; right: 115px;">C<sub>2</sub></span>
+                                    </div>
+
+                                    <!-- Второй треугольник (отдельный маленький) -->
+                                    <div class="triangle-wrapper">
+                                        <svg width="180" height="150" viewBox="0 0 180 150">
+                                            <path class="animated-triangle" d="M30,100 L60,10 L150,100 Z" fill="none" stroke="black" stroke-width="3" style="animation-delay: 0.0s;"/>
+                                            <!-- Дужки для углов A1 и B1 - появляются по 1 пробелу -->
+                                            <path class="fragment angle-arc " data-fragment-index="1" d="M33.5,87 Q42,86 43,100"/>
+                                        </svg>
+                                        <span class="vertex-label-small vertex-a1">A<sub>1</sub></span>
+                                        <span class="vertex-label-small vertex-c1">C<sub>1</sub></span>
+                                        <span class="vertex-label-small vertex-b1">B<sub>1</sub></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Правая часть - доказательство -->
+                            <div class="right-proof">
+                                <p style="font-size: 16px"><strong>Доказательство:</strong></p>
+                                <div id="proof-steps-2">
+                                    <p class="fragment" data-fragment-index="2">
+                                        <strong>1.</strong> Пусть \(A_1B_1 > AB\). На луче \(A_1B_1\) отложим отрезок \(A_1B_2\) такой, что \(A_1B_2 = AB\).
+                                    </p>
+                                    <p class="fragment" data-fragment-index="3">
+                                        <strong>2.</strong> Через точку \(B_2\) проведём прямую \(B_2C_2\), параллельную прямой \(B_1C_1\).
+                                    </p>
+                                    <p class="fragment" data-fragment-index="4">
+                                        <strong>3.</strong> \(\angle A_1B_2C_2 = \angle A_1B_1C_1\) (как соответственные при \(B_2C_2 \parallel B_1C_1\) и секущей \(A_1B_1\)).
+                                    </p>
+                                    <p class="fragment" data-fragment-index="5">
+                                        <strong>4.</strong> В треугольниках \(A_1B_2C_2\) и \(A_1B_1C_1\):
+                                        \(\angle A_1\) - общий,
+                                        \(\angle A_1B_2C_2 = \angle A_1B_1C_1\).<br>
+                                        Поэтому \(\Delta A_1B_2C_2 \sim \Delta A_1B_1C_1\) (по двум углам).
+                                    </p>
+                                    <p class="fragment" data-fragment-index="6">
+                                        <strong>5.</strong> Из подобия следует:
+                                        \(A_1B_2:A_1B_1 = A_1C_2:A_1C_1\).
+                                    </p>
+                                    <p class="fragment" data-fragment-index="7">
+                                        <strong>6.</strong> Так как \(A_1B_2 = AB\) и \(AB:A_1B_1 = AC:A_1C_1\),
+                                        то \(AC = A_1C_2\).
+                                    </p>
+                                    <p class="fragment" data-fragment-index="8">
+                                        <strong>7.</strong> В треугольниках \(ABC\) и \(A_1B_2C_2\):
+                                        \(A_1B_2 = AB\),
+                                        \(AC = A_1C_2\),
+                                        \(\angle A = \angle A_1\) (по условию).<br>
+                                        Поэтому \(\Delta ABC = \Delta A_1B_2C_2\) (по двум сторонам и углу между ними).
+                                    </p>
+                                    <p class="fragment" data-fragment-index="9">
+                                        <strong>8.</strong> Из равенства треугольников:
+                                        \(\angle ABC = \angle A_{1}B_{2}C_{2}\).
+                                    </p>
+                                    <p class="fragment" data-fragment-index="10">
+                                        <strong>9.</strong> Так как \(\angle A_1B_2C_2 = \angle A_1B_1C_1\),
+                                        то \(\angle ABC = \angle A_1B_1C_1\).
+                                    </p>
+                                    <p class="fragment" data-fragment-index="11">
+                                        <strong>10.</strong> В треугольниках \(ABC\) и \(A_1B_1C_1\):
+                                        \(\angle A = \angle A_1\),
+                                        \(\angle ABC = \angle A_1B_1C_1\)
+                                        $\Rightarrow$ \(\Delta ABC \sim \Delta A_1B_1C_1\) по двум углам.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+               		<!-- Четвертый слайд -->
+                    <section class="similarity-signs-slide">
+                        <h3 class="slide-title" style="margin-left: -100px;">Признаки подобия треугольников</h3>
+
+                        <p style="font-size: 28px; text-align: center; margin-bottom: 40px; margin-left: -100px;">
+                            Если три стороны одного треугольника пропорциональны трём сторонам другого треугольника, то такие треугольники подобны.
+                        </p>
+
+                        <div class="conditions-container">
+                            <!-- Левая часть -->
+                            <div class="left-conditions">
+                                <div style="margin-bottom: 0px; margin-left: -550px;">
+                                    <p><strong>Дано:</strong></p>
+                                    <p>\(\frac{AB}{A_1B_1}=\frac{AC}{A_1C_1}=\frac{BC}{B_1C_1}\)</p>
+                                </div>
+
+                                <div style="margin-top: -102px; margin-left: -10px;">
+                                    <p><strong>Доказать:</strong></p>
+                                    <p>\(\triangle ABC \sim \triangle A_1B_1C_1\)</p>
+                                </div>
+
+                                <!-- Треугольники с отметками равных углов -->
+                                <div class="triangles-container" style="margin-left: -320px; gap: 20px;">
+                                    <!-- Большой треугольник -->
+                                    <div class="triangle-wrapper">
+                                        <svg width="300" height="250" viewBox="0 0 300 250">
+                                            <!-- Большой треугольник -->
+                                            <path class="animated-triangle" d="M50,200 L100,50 L250,200 Z" fill="none" stroke="black" stroke-width="3"/>
+                                        </svg>
+                                        <span class="vertex-label vertex-a">A</span>
+                                        <span class="vertex-label vertex-c">C</span>
+                                        <span class="vertex-label vertex-b">B</span>
+                                    </div>
+
+                                    <!-- Второй треугольник (отдельный маленький) -->
+                                    <div class="triangle-wrapper">
+                                        <svg width="180" height="210" viewBox="0 0 180 200">
+                                            <path class="animated-triangle" d="M30,100 L60,10 L150,100 Z" fill="none" stroke="black" stroke-width="3" style="animation-delay: 0.0s;"/>
+                                            <path class="fragment animated-line" data-fragment-index="2" d="M30,100 L60,190 L150,100 Z" fill="none" stroke="black" stroke-width="2"/>
+                                        </svg>
+                                        <span class="vertex-label-small vertex-a1" style="margin-bottom: 85px; margin-right: 40px; margin-left: -20px;">A<sub>1</sub></span>
+                                        <span class="vertex-label-small vertex-c1" style="margin-bottom: 83px; margin-left: 40px; margin-right: -20px;">C<sub>1</sub></span>
+                                        <span class="vertex-label-small vertex-b1">B<sub>1</sub></span>
+                                        <span class="fragment vertex-label-small" data-fragment-index="2" style="position: absolute; bottom: -10px; right: 100px;">B<sub>2</sub></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Правая часть - доказательство -->
+                        <div class="right-proof" style="margin-top: -1px;">
+                            <p style="font-size: 22px"><strong>Доказательство:</strong></p>
+                            <div id="proof-steps-3">
+                                <p class="fragment" data-fragment-index="1">
+                                    <strong>1.</strong> Пусть стороны треугольников \(ABC\) и \(A_1B_1C_1\) пропорциональны:<br>
+                                    \(\frac{AC}{A_1C_1} = \frac{AB}{A_1B_1} = \frac{BC}{B_1C_1}\).
+                                </p>
+                                <p class="fragment" data-fragment-index="2">
+                                    <strong>2.</strong> Рассмотрим треугольник \(A_1B_2C_1\), у которого:<br>
+                                    \(\angle B_2A_1C_1 = \angle A\) и \(\angle B_2C_1A_1 = \angle C\).
+                                </p>
+                                <p class="fragment" data-fragment-index="3">
+                                    <strong>3.</strong> Треугольники \(A_1B_2C_1 \sim ABC\)(по двум равным углам) $\Rightarrow$ \(\frac{AC}{A_1C_1} = \frac{AB}{A_1B_2} = \frac{BC}{B_2C_1}\).
+                                </p>
+                                <p class="fragment" data-fragment-index="4">
+                                    <strong>4.</strong> \(\frac{AB}{A_1B_1} = \frac{BC}{B_1C_1} = \frac{AC}{A_1C_1} = \frac{AB}{A_1B_2} = \frac{BC}{B_2C_1}\) $\Rightarrow$ \(B_1C_1=B_2C_1\) и \(A_1B_1=A_1B_2\).
+                                </p>
+                                <p class="fragment" data-fragment-index="5">
+                                    <strong>5.</strong> \(B_1C_1=B_2C_1\), \(A_1B_1=A_1B_2\), $A_1C_1$ - общая $\Rightarrow$ \(\triangle A_1B_1C_1 = \triangle A_1B_2C_1\). <br>
+                                    Значит, \(\angle B_1A_1C_1 = \angle B_2A_1C_1\).
+                                </p>
+                                <p class="fragment" data-fragment-index="6">
+                                    <strong>6.</strong> \(\angle B_2A_1C_1 = \angle A\) и \(\angle B_1A_1C_1 = \angle B_2A_1C_1\) $\Rightarrow \angle A = \angle B_1A_1C_1$.
+                                <p class="fragment" data-fragment-index="7">
+                                    <strong>7.</strong> \(\frac{AC}{A_1C_1} = \frac{AB}{A_1B_1}\), \(\angle A = \angle B_1A_1C_1\) $\Rightarrow$ \(\triangle ABC \sim \triangle A_1B_1C_1\)<br>
+                                    (по двум пропорциональным сторонам и равным углам между ними).
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <!-- Пятый слайд - Отношение площадей -->
+                <section>
+                    <h3 class="slide-title">Отношение площадей подобных треугольников</h3>
+
+                    <p style="font-size: 32px; text-align: center; margin-bottom: 22px;">
+                        Отношение площадей подобных треугольников равно квадрату коэффициента подобия
+                    </p>
+
+                    <div style="display: flex; gap: 60px; align-items: flex-start; padding: 20px; margin-left: -250px;">
+                        <!-- Левая часть - треугольники с высотами -->
+                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                            <!-- Блок "Дано" и "Доказать" -->
+                            <div style="display: flex; gap: 100px; margin-bottom: 30px; justify-content: center; width: 100%;">
+                                <div style="text-align: center;">
+                                    <p style="font-size: 22px; margin-bottom: 10px;"><strong>Дано:</strong></p>
+                                    <p style="font-size: 22px;">\(\triangle ABC \sim \triangle A_1B_1C_1\)</p>
+                                </div>
+                                <div style="text-align: center;">
+                                    <p style="font-size: 22px; margin-bottom: 10px;"><strong>Доказать:</strong></p>
+                                    <p style="font-size: 22px;">\(\frac{S_{\triangle ABC}}{S_{\triangle A_1B_1C_1}} = k^2\)</p>
+                                </div>
+                            </div>
+
+                            <!-- Треугольники с высотами -->
+                            <div style="display: flex; gap: 80px; align-items: flex-end; margin-top: -30px;">
+                                <!-- Первый треугольник с высотой -->
+                                <div class="triangle-wrapper">
+                                    <svg width="300" height="250" viewBox="0 0 300 250">
+                                        <path id="area-triangle1" class="first-slide-triangle" d="M50,200 L100,50 L250,200 Z" fill="none" stroke="black" stroke-width="3"/>
+                                        <!-- Дужки для углов A и B - появляются по 1 пробелу -->
+                                            <path class="fragment angle-arc" data-fragment-index="1" d="M94,70 Q105,75 117,67"/>
+                                    </svg>
+                                    <span id="vertex-a-area" class="vertex-label vertex-a" style="opacity:0">A</span>
+                                    <span id="vertex-c-area" class="vertex-label vertex-c" style="opacity:0">C</span>
+                                    <span id="vertex-b-area" class="vertex-label vertex-b" style="opacity:0">B</span>
+                                </div>
+
+                                <!-- Второй треугольник с высотой -->
+                                <div class="triangle-wrapper">
+                                    <svg width="180" height="150" viewBox="0 0 180 150">
+                                        <path id="area-triangle2" class="first-slide-triangle" d="M30,100 L60,10 L150,100 Z" fill="none" stroke="black" stroke-width="3"/>
+                                        <path class="fragment angle-arc" data-fragment-index="1" d="M55,25 Q65,30 71,19"/>
+                                    </svg>
+                                    <span id="vertex-a1-area" class="vertex-label-small vertex-a1" style="opacity:0">A<sub>1</sub></span>
+                                    <span id="vertex-c1-area" class="vertex-label-small vertex-c1" style="opacity:0">C<sub>1</sub></span>
+                                    <span id="vertex-b1-area" class="vertex-label-small vertex-b1" style="opacity:0">B<sub>1</sub></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Правая часть - доказательство -->
+                        <div style="flex: 1; font-size: 18px; line-height: 1.4; text-align: left; margin-top: 0px; margin-right: -250px; margin-left: -100px;">
+                            <p style="font-size: 22px;"><strong>Доказательство:</strong></p>
+                            <div id="area-proof-steps">
+                                <p class="fragment" data-fragment-index="1">
+                                    <strong>1.</strong> \(\triangle ABC \sim \triangle A_1B_1C_1 \Rightarrow \angle B = \angle B_1\) по определению подобных треугольников.
+                                </p>
+                                <p class="fragment" data-fragment-index="2">
+                                    <strong>2.</strong> По следствию из площади треугольника о том, что площади треугольников с равными углами относятся, как произведения сторон, заключающих данные углы: \(\frac{S_{\triangle ABC}}{S_{\triangle A_1b_1c_1}} = \frac{AB \cdot BC}{A_1B_1 \cdot B_1C_1}\).
+                                </p>
+                                <p class="fragment" data-fragment-index="3">
+                                    <strong>3.</strong> \(\triangle ABC \sim \triangle A_1B_1C_1 \Rightarrow \frac{AB}{A_1B_1} = \frac{BC}{B_1C_1} = k\) по определению подобных треугольников.
+                                </p>
+                                <p class="fragment" data-fragment-index="4">
+                                    <strong>4.</strong> Тогда, \(\frac{S_{\triangle ABC}}{S_{\triangle A_1b_1c_1}} = \frac{AB \cdot BC}{A_1B_1 \cdot B_1C_1} = \frac{AB}{A_1B_1} \cdot \frac{BC}{B_1C_1} = k \cdot k = k^2 \)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+</section>
+			</div>
+		</div>
+
+        <script src="reveal.js/dist/reveal.js"></script>
+        <script src="reveal.js/plugin/math/math.js"></script>
+        <script>
+            Reveal.initialize({
+				history: true,
+				transition: 'linear',
+
+				mathjax2: {
+					config: 'TeX-AMS_HTML-full',
+					TeX: {
+						Macros: {
+							R: '\\mathbb{R}',
+							set: [ '\\left\\{#1 \\; ; \\; #2\\right\\}', 2 ]
+						}
+					}
+				},
+				plugins: [ RevealMath.MathJax2 ]
+            });
+
+
+            let firstSlideAnimated = false;
+            // Обработка клавиатуры для первого слайда
+            document.addEventListener('keydown', function(event) {
+                const currentSlide = Reveal.getCurrentSlide();
+
+                // Только для первого слайда и только один раз
+                if (currentSlide.querySelector('#triangle1') && !firstSlideAnimated && event.code === 'Space') {
+                    event.preventDefault();
+                    event.stopImmediatePropagation();
+
+                    console.log('Starting triangle animation'); // Для отладки
+
+                    // Запускаем анимацию для первого треугольника
+                    const triangle1 = document.getElementById('triangle1');
+                    triangle1.style.animation = 'draw 2s ease-in-out forwards';
+
+                    // Запускаем анимацию для второго треугольника
+                    const triangle2 = document.getElementById('triangle2');
+                    triangle2.style.animation = 'draw 2s ease-in-out forwards';
+
+                    // Показываем все вершины
+                    ['vertex-a', 'vertex-b', 'vertex-c', 'vertex-a1', 'vertex-b1', 'vertex-c1'].forEach(id => {
+                        document.getElementById(id).style.opacity = '1';
+                    });
+
+                    firstSlideAnimated = true;
+
+                    // Блокируем навигацию на время анимации
+                    setTimeout(() => {
+                        console.log('Animation completed');
+                    }, 2000);
+
+                    return false;
+                }
+            });
+
+            // Сброс при возврате к первому слайду
+            Reveal.addEventListener('slidechanged', function(event) {
+                if (event.currentSlide.querySelector('#triangle1')) {
+                    firstSlideAnimated = false;
+                    // Сбрасываем анимацию
+                    ['triangle1', 'triangle2'].forEach(id => {
+                        const triangle = document.getElementById(id);
+                        triangle.style.animation = 'none';
+                        // Принудительный reflow для сброса анимации
+                        void triangle.offsetWidth;
+                    });
+
+                    // Скрываем вершины
+                    ['vertex-a', 'vertex-b', 'vertex-c', 'vertex-a1', 'vertex-b1', 'vertex-c1'].forEach(id => {
+                        document.getElementById(id).style.opacity = '0';
+                    });
+                }
+            });
+
+            // Управление анимацией и заменой текста для второго слайда
+            let currentTextState = 0;
+            const trianglesContainer = document.getElementById('animated-triangles');
+
+            Reveal.addEventListener('fragmentshown', function(event) {
+                const fragmentIndex = parseInt(event.fragment.getAttribute('data-fragment-index'));
+
+                if (fragmentIndex === 1) {
+                    showText(1);
+                    trianglesContainer.classList.add('animation-active');
+                    currentTextState = 1;
+                } else if (fragmentIndex === 2) {
+                    showText(2);
+                    currentTextState = 2;
+                }
+            });
+
+            Reveal.addEventListener('fragmenthidden', function(event) {
+                const fragmentIndex = parseInt(event.fragment.getAttribute('data-fragment-index'));
+
+                if (fragmentIndex === 1) {
+                    showText(0);
+                    trianglesContainer.classList.remove('animation-active');
+                    currentTextState = 0;
+                } else if (fragmentIndex === 2) {
+                    showText(1);
+                    currentTextState = 1;
+                }
+            });
+
+            // Обработка клавиатуры для всех слайдов
+            document.addEventListener('keydown', function(event) {
+                const currentSlide = Reveal.getCurrentSlide();
+
+                // Для второго слайда
+                if (currentSlide.querySelector('#animated-triangles')) {
+                    if (event.code === 'Space') {
+                        event.preventDefault();
+
+                        if (currentTextState === 0) {
+                            showText(1);
+                            trianglesContainer.classList.add('animation-active');
+                            currentTextState = 1;
+                        } else if (currentTextState === 1) {
+                            showText(2);
+                            currentTextState = 2;
+                        } else if (currentTextState === 2) {
+                            trianglesContainer.classList.remove('animation-active');
+                            currentTextState = 3;
+                        }
+                    }
+
+                    if (event.key === 'ArrowDown') {
+                        event.preventDefault();
+
+                        if (currentTextState === 0) {
+                            showText(1);
+                            trianglesContainer.classList.add('animation-active');
+                            currentTextState = 1;
+                        } else if (currentTextState === 1) {
+                            showText(2);
+                            currentTextState = 2;
+                        } else if (currentTextState === 2) {
+                            trianglesContainer.classList.remove('animation-active');
+                            currentTextState = 3;
+                        }
+                    }
+
+                    if (event.key === 'ArrowUp') {
+                        event.preventDefault();
+
+                        if (currentTextState === 3) {
+                            showText(2);
+                            trianglesContainer.classList.add('animation-active');
+                            currentTextState = 2;
+                        } else if (currentTextState === 2) {
+                            showText(1);
+                            currentTextState = 1;
+                        } else if (currentTextState === 1) {
+                            showText(0);
+                            trianglesContainer.classList.remove('animation-active');
+                            currentTextState = 0;
+                        }
+                    }
+                }
+            });
+
+            function showText(state) {
+                const textFirst = document.getElementById('text-first');
+                const textSecond = document.getElementById('text-second');
+                const textThird = document.getElementById('text-third');
+
+                let currentActive = null;
+                if (!textFirst.classList.contains('text-hidden')) currentActive = textFirst;
+                else if (!textSecond.classList.contains('text-hidden')) currentActive = textSecond;
+                else if (!textThird.classList.contains('text-hidden')) currentActive = textThird;
+
+                if ((state === 0 && currentActive === textFirst) ||
+                    (state === 1 && currentActive === textSecond) ||
+                    (state === 2 && currentActive === textThird)) {
+                    return;
+                }
+
+                textFirst.classList.add('text-hidden');
+                textSecond.classList.add('text-hidden');
+                textThird.classList.add('text-hidden');
+
+                textFirst.classList.remove('text-exit', 'text-enter', 'text-enter-active');
+                textSecond.classList.remove('text-exit', 'text-enter', 'text-enter-active');
+                textThird.classList.remove('text-exit', 'text-enter', 'text-enter-active');
+
+                if (currentActive) {
+                    currentActive.classList.remove('text-hidden');
+                    currentActive.classList.add('text-exit');
+
+                    setTimeout(() => {
+                        currentActive.classList.add('text-hidden');
+                        currentActive.classList.remove('text-exit');
+                        showNewText(state);
+                    }, 600);
+                } else {
+                    showNewText(state);
+                }
+
+                currentTextState = state;
+            }
+
+            function showNewText(state) {
+                const textFirst = document.getElementById('text-first');
+                const textSecond = document.getElementById('text-second');
+                const textThird = document.getElementById('text-third');
+
+                let newText = null;
+                if (state === 0) newText = textFirst;
+                else if (state === 1) newText = textSecond;
+                else if (state === 2) newText = textThird;
+
+                if (newText) {
+                    newText.classList.remove('text-hidden');
+                    newText.classList.add('text-enter');
+
+                    setTimeout(() => {
+                        newText.classList.add('text-enter-active');
+                    }, 50);
+
+                    setTimeout(() => {
+                        newText.classList.remove('text-enter', 'text-enter-active');
+                    }, 600);
+                }
+            }
+
+           let areaSlideAnimated = false;
+
+            // Обработка клавиатуры для слайда с площадями
+            document.addEventListener('keydown', function(event) {
+                const currentSlide = Reveal.getCurrentSlide();
+
+                // Для слайда с площадями
+                if (currentSlide.querySelector('#area-triangle1') && !areaSlideAnimated && event.code === 'Space') {
+                    event.preventDefault();
+                    event.stopImmediatePropagation();
+
+                    // Анимируем треугольники
+                    document.getElementById('area-triangle1').style.animation = 'draw 2s ease-in-out forwards';
+                    document.getElementById('area-triangle2').style.animation = 'draw 2s ease-in-out forwards';
+
+                    // Показываем вершины одновременно с анимацией треугольников
+                    ['vertex-a-area', 'vertex-b-area', 'vertex-c-area', 'vertex-a1-area', 'vertex-b1-area', 'vertex-c1-area'].forEach(id => {
+                        document.getElementById(id).style.opacity = '1';
+                    });
+
+                    areaSlideAnimated = true;
+                    return false;
+                }
+            });
+
+            // Сброс при возврате к слайду с площадями
+            Reveal.addEventListener('slidechanged', function(event) {
+                if (event.currentSlide.querySelector('#area-triangle1')) {
+                    areaSlideAnimated = false;
+
+                    // Сбрасываем анимацию треугольников
+                    ['area-triangle1', 'area-triangle2'].forEach(id => {
+                        const triangle = document.getElementById(id);
+                        triangle.style.animation = 'none';
+                        void triangle.offsetWidth;
+                    });
+
+                    // Скрываем вершины
+                    ['vertex-a-area', 'vertex-b-area', 'vertex-c-area', 'vertex-a1-area', 'vertex-b1-area', 'vertex-c1-area'].forEach(id => {
+                        document.getElementById(id).style.opacity = '0';
+                    });
+                }
+            });
+
+            let signsSlideAnimated = false;
+            // Обработка клавиатуры для слайда с признаками
+            document.addEventListener('keydown', function(event) {
+                const currentSlide = Reveal.getCurrentSlide();
+
+                // Для слайда с признаками подобия
+                if (currentSlide.querySelector('#signs-triangle1') && !signsSlideAnimated && event.code === 'Space') {
+                    event.preventDefault();
+                    event.stopImmediatePropagation();
+
+                    // Анимируем треугольники
+                    document.getElementById('signs-triangle1').style.animation = 'draw 2s ease-in-out forwards';
+                    document.getElementById('signs-triangle2').style.animation = 'draw 2s ease-in-out forwards';
+
+                    // Показываем вершины
+                    ['signs-vertex-a', 'signs-vertex-b', 'signs-vertex-c', 'signs-vertex-a1', 'signs-vertex-b1', 'signs-vertex-c1'].forEach(id => {
+                        document.getElementById(id).style.opacity = '1';
+                    });
+
+                    signsSlideAnimated = true;
+                    return false;
+                }
+            });
+
+            // Сброс при возврате к слайду с признаками
+            Reveal.addEventListener('slidechanged', function(event) {
+                if (event.currentSlide.querySelector('#signs-triangle1')) {
+                    signsSlideAnimated = false;
+
+                    // Сбрасываем анимацию треугольников
+                    ['signs-triangle1', 'signs-triangle2'].forEach(id => {
+                        const triangle = document.getElementById(id);
+                        triangle.style.animation = 'none';
+                        void triangle.offsetWidth;
+                    });
+
+                    // Скрываем вершины
+                    ['signs-vertex-a', 'signs-vertex-b', 'signs-vertex-c', 'signs-vertex-a1', 'signs-vertex-b1', 'signs-vertex-c1'].forEach(id => {
+                        document.getElementById(id).style.opacity = '0';
+                    });
+                }
+            });
+        </script>
+	</body>
+</html>
